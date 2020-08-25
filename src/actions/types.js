@@ -1,0 +1,4 @@
+export const GET_NOTICES = "GET_NOTICES";
+export const DELETE_NOTICES = "DELETE_NOTICES";
+export const CREATE_MESSAGE = "CREATE_MESSAGE";
+export const GET_ERRORS = "GET_ERRORS";
