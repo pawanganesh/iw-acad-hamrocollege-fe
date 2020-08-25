@@ -21,7 +21,7 @@ class Notices extends Component {
           <NoticeForm />
 
           {/* style={{ marginTop: "7em" }} */}
-          <Header as="h1">Semantic UI React Fixed Template</Header>
+          <Header as="h1">Notice post</Header>
 
           <Feed>
             {this.props.notices.map((notice) => (
