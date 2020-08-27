@@ -1,12 +1,12 @@
 import axios from "axios";
-import { createMessage, returnErrors } from "./messages";
-
+// import { createMessage, returnErrors } from "./messages";
+import { tokenConfig } from "./auth";
 import { GET_NOTICES, DELETE_NOTICES } from "./types";
 
 //GET NOTICES
-export const getNotices = () => (dispatch) => {
+export const getNotices = () => (dispatch, getState) => {
   axios
-    .get("http://127.0.0.1:8000/api/notice/")
+    .get("http://127.0.0.1:8000/api/notice/", tokenConfig(getState))
     .then((res) => {
       dispatch({
         type: GET_NOTICES,
@@ -17,9 +17,9 @@ export const getNotices = () => (dispatch) => {
 };
 
 // DELETE NOTICE
-export const deleteNotice = (id) => (dispatch) => {
+export const deleteNotice = (id) => (dispatch, getState) => {
   axios
-    .delete(`http://127.0.0.1:8000/api/notice/${id}/`)
+    .delete(`http://127.0.0.1:8000/api/notice/${id}/`, tokenConfig(getState))
     .then((res) => {
       dispatch({
         type: DELETE_NOTICES,

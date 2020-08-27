@@ -5,8 +5,8 @@ const initialState = {
 };
 
 const noticeReducer = (state = initialState, action) => {
-  console.log("Action is:", action);
-  console.log("state is:", state);
+  // console.log("Action is:", action);
+  // console.log("state is:", state);
 
   switch (action.type) {
     case GET_NOTICES: {
