@@ -11,6 +11,8 @@ import PrivateRoute from "./common/PrivateRoute";
 import { loadUser } from "../actions/auth";
 import store from "../store";
 
+import Alerts from "./layout/Alerts";
+
 class App extends Component {
   componentDidMount() {
     store.dispatch(loadUser());
@@ -20,6 +22,7 @@ class App extends Component {
       <Router>
         <Fragment>
           <Header />
+          <Alerts />
           <Container>
             <Switch>
               <PrivateRoute exact path="/" component={Home} />

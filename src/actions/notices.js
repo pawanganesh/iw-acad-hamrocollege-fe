@@ -1,5 +1,5 @@
 import axios from "axios";
-// import { createMessage, returnErrors } from "./messages";
+import { createMessage } from "./messages";
 import { tokenConfig } from "./auth";
 import { GET_NOTICES, DELETE_NOTICES } from "./types";
 
@@ -21,6 +21,7 @@ export const deleteNotice = (id) => (dispatch, getState) => {
   axios
     .delete(`http://127.0.0.1:8000/api/notice/${id}/`, tokenConfig(getState))
     .then((res) => {
+      dispatch(createMessage({ deleteNotice: "Notice Deleted" }));
       dispatch({
         type: DELETE_NOTICES,
         payload: id,

@@ -10,6 +10,7 @@ import {
   LOGOUT_SUCCESS,
   REGISTER_SUCCESS,
   REGISTER_FAIL,
+  GET_ERRORS,
 } from "./types";
 
 //CHECK TOKEN & LOAD USER
@@ -121,9 +122,15 @@ export const register = ({ first_name, last_name, email, password }) => (
       });
     })
     .catch((err) => {
-      dispatch(returnErrors(err.response.data, err.response.status));
+      const errors = {
+        msg: err.response.data,
+        status: err.response.status,
+      };
+      // dispatch(returnErrors(err.response.data, err.response.status));
       dispatch({
-        type: REGISTER_FAIL,
+        // type: REGISTER_FAIL,
+        type: GET_ERRORS,
+        payload: errors,
       });
     });
 };

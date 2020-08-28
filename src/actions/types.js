@@ -1,6 +1,7 @@
 export const GET_NOTICES = "GET_NOTICES";
 export const DELETE_NOTICES = "DELETE_NOTICES";
 export const CREATE_MESSAGE = "CREATE_MESSAGE";
+export const GET_MESSAGES = "GET_MESSAGES";
 export const GET_ERRORS = "GET_ERRORS";
 export const USER_LOADING = "USER_LOADING";
 export const USER_LOADED = "USER_LOADED";
