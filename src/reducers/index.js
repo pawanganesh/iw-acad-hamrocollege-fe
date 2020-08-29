@@ -1,8 +1,7 @@
 import { combineReducers } from "redux";
-import noticeReducer from "./notices";
+import assigns from './assigns' 
 
-const allReducers = combineReducers({
-  notices: noticeReducer,
+export default combineReducers({
+  assigns
+
 });
-
-export default allReducers;

@@ -1,33 +1,26 @@
-import React, { Component } from "react";
-import { Menu } from "semantic-ui-react";
+import React, { Component } from 'react'
 
-export default class Header extends Component {
-  state = { activeItem: "hamroCollege" };
-
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name });
-  render() {
-    const { activeItem } = this.state;
-
-    return (
-      <div>
-        <Menu secondary>
-          <Menu.Item
-            name="hamroCollege"
-            active={activeItem === "hamroCollege"}
-            onClick={this.handleItemClick}
-          />
-          <Menu.Item
-            name="messages"
-            active={activeItem === "messages"}
-            onClick={this.handleItemClick}
-          />
-          <Menu.Item
-            name="friends"
-            active={activeItem === "friends"}
-            onClick={this.handleItemClick}
-          />
-        </Menu>
-      </div>
-    );
-  }
+class Header extends Component {
+    render() {
+        return (            
+            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                <span className="navbar-toggler-icon"></span>
+                </button>
+                <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
+                    <a className="navbar-brand" href="#">Homework Section</a>
+                    <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li className="nav-item active">
+                        <a className="nav-link" href="/">Assignment <span className="sr-only">(current)</span></a>
+                    </li> 
+                    <li className="nav-item active">
+                        <a className="nav-link" href="#">Submission <span className="sr-only">(current)</span></a>
+                    </li>                                        
+                    </ul>                    
+                </div>
+            </nav>      
+        )
+    }
 }
+
+export default Header

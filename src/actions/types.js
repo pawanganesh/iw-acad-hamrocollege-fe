@@ -1,4 +1,3 @@
-export const GET_NOTICES = "GET_NOTICES";
-export const DELETE_NOTICES = "DELETE_NOTICES";
-export const CREATE_MESSAGE = "CREATE_MESSAGE";
-export const GET_ERRORS = "GET_ERRORS";
+export const GET_ASSIGNS= "GET_ASSIGNS"
+export const DELETE_ASSIGNS= "DELETE_ASSIGNS"
+export const ADD_ASSIGNS= "ADD_ASSIGNS"
