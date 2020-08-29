@@ -1,7 +1,7 @@
 import axios from "axios";
-import { createMessage } from "./messages";
+import { createMessage, returnErrors } from "./messages";
 import { tokenConfig } from "./auth";
-import { GET_NOTICES, DELETE_NOTICES } from "./types";
+import { GET_NOTICES, DELETE_NOTICES, ADD_NOTICE } from "./types";
 
 //GET NOTICES
 export const getNotices = () => (dispatch, getState) => {
@@ -14,6 +14,23 @@ export const getNotices = () => (dispatch, getState) => {
       });
     })
     .catch((err) => console.log(err));
+};
+
+// ADD NOTICE
+
+export const addNotice = (notice) => (dispatch, getState) => {
+  axios
+    .post("http://127.0.0.1:8000/api/notice/", notice, tokenConfig(getState))
+    .then((res) => {
+      dispatch(createMessage({ addNotice: "Notice Added" }));
+      dispatch({
+        type: ADD_NOTICE,
+        payload: res.data,
+      });
+    })
+    .catch((err) =>
+      dispatch(returnErrors(err.response.data, err.response.status))
+    );
 };
 
 // DELETE NOTICE

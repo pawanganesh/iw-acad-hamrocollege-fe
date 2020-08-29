@@ -1,4 +1,9 @@
-import { GET_NOTICES, DELETE_NOTICES } from "../actions/types.js";
+import {
+  GET_NOTICES,
+  DELETE_NOTICES,
+  ADD_NOTICE,
+  CLEAR_NOTICE,
+} from "../actions/types.js";
 
 const initialState = {
   notices: [],
@@ -15,6 +20,18 @@ const noticeReducer = (state = initialState, action) => {
         notices: action.payload,
       };
     }
+
+    case ADD_NOTICE:
+      return {
+        ...state,
+        notices: [...state.notices, action.payload],
+      };
+
+    case CLEAR_NOTICE:
+      return {
+        ...state,
+        notices: [],
+      };
 
     case DELETE_NOTICES:
       return {
