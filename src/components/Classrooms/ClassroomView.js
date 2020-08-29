@@ -2,11 +2,11 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from "prop-types";
 import { getClassrooms, deleteClassroom } from "../../actions/Classroom";
-import { Table } from "semantic-ui-react";
+import { Table, Icon } from "semantic-ui-react";
 
 
-class Classroom extends Component {
-    static propTypes = {
+class ClassroomView extends Component {
+    static propTypes ={
         classrooms: PropTypes.array.isRequired,
     };
 
@@ -27,6 +27,7 @@ class Classroom extends Component {
                             <Table.HeaderCell>Section</Table.HeaderCell>
                             <Table.HeaderCell>Creator</Table.HeaderCell>
                             <Table.HeaderCell>Created_at</Table.HeaderCell>
+                           
                         </Table.Row>
                     </Table.Header>
 
@@ -41,6 +42,9 @@ class Classroom extends Component {
                             <Table.Cell>classroom.creator</Table.Cell>
                             <Table.Cell>classroom.created_at</Table.Cell>
                             <Table.Cell>
+                                <Icon name='add circle'>
+                                <button onClick={this.props.deleteClassroom.bind(this,classroom.id) }></button>
+                                </Icon>
                                 <button onClick={this.props.deleteClassroom.bind(this,classroom.id)}>Delete</button>
                             </Table.Cell>
                             
@@ -61,4 +65,4 @@ const mapStateToProps = (state) => ({
     classrooms: state.classrooms.classrooms
 });
 
-export default connect (mapStateToProps, { getClassrooms, deleteClassroom }) (Classroom)
+export default connect (mapStateToProps, { getClassrooms, deleteClassroom }) (ClassroomView)

@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { Menu } from 'semantic-ui-react'
 
-export default class MenuExampleInverted extends Component {
-  state = { activeItem: 'home' }
+class ClubMenu extends Component {
+  state = { activeItem: 'Home' }
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
@@ -10,28 +10,34 @@ export default class MenuExampleInverted extends Component {
     const { activeItem } = this.state
 
     return (
-      <Menu inverted>
+      <Menu tabular>
         <Menu.Item
-          name='home'
-          active={activeItem === 'home'}
+          name='Home'
+          active={activeItem === 'Home'}
           onClick={this.handleItemClick}
+          icon='home'
         />
         <Menu.Item
-          name='classrooms'
-          active={activeItem === 'classrooms'}
+          name='ADD Club'
+          active={activeItem === 'ADD Club'}
           onClick={this.handleItemClick}
+          icon='add'
         />
         <Menu.Item
-          name='Clubs'
-          active={activeItem === 'clubs'}
+          name='ADD Member'
+          active={activeItem === 'ADD Member'}
           onClick={this.handleItemClick}
+          icon='add'
         />
         <Menu.Item
-          name='attendance'
-          active={activeItem === 'attendance'}
+          name='Announcement'
+          active={activeItem === 'Announcement'}
           onClick={this.handleItemClick}
+          icon='notice'
         />
       </Menu>
     )
   }
 }
+
+export default ClubMenu;
