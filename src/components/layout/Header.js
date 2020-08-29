@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from "react-router-dom";
 
 class Header extends Component {
     render() {
@@ -8,13 +9,19 @@ class Header extends Component {
                 <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-                    <a className="navbar-brand" href="#">Homework Section</a>
+                    <Link to="/home">
+                        <a className="navbar-brand">Homework Section</a>
+                    </Link>
                     <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
                     <li className="nav-item active">
-                        <a className="nav-link" href="/">Assignment <span className="sr-only">(current)</span></a>
+                        <Link to="/home">
+                            <a className="nav-link" >Assignment <span className="sr-only">(current)</span></a>
+                        </Link>
                     </li> 
                     <li className="nav-item active">
-                        <a className="nav-link" href="#">Submission <span className="sr-only">(current)</span></a>
+                        <Link to="/submission">
+                            <a className="nav-link">Submission <span className="sr-only">(current)</span></a>
+                        </Link>
                     </li>                                        
                     </ul>                    
                 </div>
