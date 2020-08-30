@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Menu, Dropdown, Modal } from "semantic-ui-react";
+import { Menu, Dropdown, Modal, Image } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
@@ -17,12 +17,7 @@ class Header extends Component {
   render() {
     const { activeItem } = this.state;
     const { isAuthenticated, user } = this.props.auth;
-    // const trigger = (
-    //   <span>
-    //     {<Image avatar src={`${user.profile}`} alt="Profile Picture" />}
-    //   </span>
-    // );
-    // console.log(user.username);
+
     return (
       <div>
         {isAuthenticated ? (
@@ -35,13 +30,15 @@ class Header extends Component {
               to="/"
             />
 
-            {/* <Image src={`${user.profile}`} /> */}
             <Dropdown
-              // trigger={trigger}
-              // <span></span>
+              trigger={
+                <span>
+                  <Image avatar src={user.profile} />
+                  {user ? `${user.first_name} ${user.last_name} ` : ""}
+                </span>
+              }
               pointing
               className="link item"
-              text={user ? `${user.first_name} ${user.last_name} ` : ""}
             >
               <Dropdown.Menu>
                 <Dropdown.Item text="Profile" />

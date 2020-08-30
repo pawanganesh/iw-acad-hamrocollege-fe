@@ -1,8 +1,9 @@
 import {
   GET_NOTICES,
   DELETE_NOTICES,
-  ADD_NOTICE,
   CLEAR_NOTICE,
+  GET_CATEGORY,
+  ADD_NOTICE_SUCCESS,
 } from "../actions/types.js";
 
 const initialState = {
@@ -21,7 +22,13 @@ const noticeReducer = (state = initialState, action) => {
       };
     }
 
-    case ADD_NOTICE:
+    case GET_CATEGORY: {
+      return {
+        ...state,
+        categories: action.payload,
+      };
+    }
+    case ADD_NOTICE_SUCCESS:
       return {
         ...state,
         notices: [...state.notices, action.payload],

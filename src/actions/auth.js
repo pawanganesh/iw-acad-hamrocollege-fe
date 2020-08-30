@@ -97,6 +97,25 @@ export const tokenConfig = (getState) => {
   return config;
 };
 
+// Setup config with token - Helper Function
+export const tokenConfigFile = (getState) => {
+  //Get token from state
+  const token = getState().auth.token;
+
+  // Headers
+  const config = {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  };
+
+  //If token, add to headers config
+  if (token) {
+    config.headers["Authorization"] = `Token ${token}`;
+  }
+  return config;
+};
+
 // REGISTER USER
 
 export const register = ({ first_name, last_name, email, password }) => (

@@ -13,13 +13,6 @@ import {
 import NoticeForm from "./NoticeForm";
 
 class Notices extends Component {
-  state = {
-    text: "",
-    file: "",
-    category: "",
-    author: "",
-    likes: "",
-  };
   static propTypes = {
     notices: PropTypes.array.isRequired,
     auth: PropTypes.object.isRequired,
@@ -38,14 +31,14 @@ class Notices extends Component {
           {user.is_admin ? <NoticeForm /> : null}
 
           {/* style={{ marginTop: "7em" }} */}
-          <Header as="h1">Notice post</Header>
+          <Header>College Notice Board</Header>
           {this.props.notices.map((notice) => (
             <Segment key={notice.id}>
               <Feed>
                 <Feed.Event>
                   <Feed.Content>
                     <Feed.Summary>
-                      <a href="/">{notice.author}</a> has posted notice
+                      <a href="/">{notice.notice_owner}</a> has posted notice
                       <Feed.Date>
                         Date Published: {notice.date_published}
                       </Feed.Date>
@@ -54,11 +47,13 @@ class Notices extends Component {
                     {/* <Feed.Extra text>{notice.text}</Feed.Extra> */}
                     <p>{notice.text}</p>
                     {/* <Feed.Extra>{notice.file}</Feed.Extra> */}
-
-                    <Feed.Extra images medium>
-                      <img src={notice.file} alt="asdas" />
-                    </Feed.Extra>
-
+                    {notice.file ? (
+                      <Feed.Extra images>
+                        <img src={notice.file} alt="asdas" />
+                      </Feed.Extra>
+                    ) : (
+                      ""
+                    )}
                     <Feed.Meta>
                       <Feed.Like>
                         <Icon name="like" />

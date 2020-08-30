@@ -22,6 +22,7 @@ export class Alerts extends Component {
     }
     if (message !== prevProps.message) {
       if (message.deleteNotice) alert.success(message.deleteNotice);
+      if (message.addNotice) alert.success(message.addNotice);
     }
   }
   render() {

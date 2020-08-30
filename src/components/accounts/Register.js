@@ -49,7 +49,7 @@ class Register extends Component {
               fluid
               label="First name"
               name="first_name"
-              placeholder="Read only"
+              placeholder="First name"
               onChange={this.onChange}
               value={first_name}
             />
@@ -57,7 +57,7 @@ class Register extends Component {
               fluid
               label="Last name"
               name="last_name"
-              placeholder="Read only"
+              placeholder="Last name"
               onChange={this.onChange}
               value={last_name}
             />
