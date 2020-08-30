@@ -1,27 +1,27 @@
-import { GET_SUBMISSIONS, DELETE_SUBMISSIONS, ADD_SUBMISSIONS} from '../actions/types'
+import { GET_SEMESTERS, DELETE_SEMESTERS, ADD_SEMESTERS} from '../actions/types'
 
     const initialState= {
-        submissions:[]
+        semesters:[]
 
     }
 
     export default function(state= initialState, action){
         switch(action.type){
-            case GET_SUBMISSIONS:
+            case GET_SEMESTERS:
                 return {
                     ...state,
-                    submissions: action.payload
+                    semesters: action.payload
                 }
-            case DELETE_SUBMISSIONS:
+            case DELETE_SEMESTERS:
                 return {
                     ...state,
-                    submissions: state.submissions.filter((submission) => submission.id !== action.payload),
+                    semesters: state.semesters.filter((semester) => semester.id !== action.payload),
                 };  
             
-            case ADD_SUBMISSIONS:
+            case ADD_SEMESTERS:
                 return {
                     ...state,
-                    submissions: [...state.submissions, action.payload]
+                    semesters: [...state.semesters, action.payload]
                 };                 
 
             default:

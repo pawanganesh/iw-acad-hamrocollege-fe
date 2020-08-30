@@ -9,20 +9,21 @@ class Header extends Component {
                 <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-                    <Link to="/home">
-                        <a className="navbar-brand">Homework Section</a>
+                    <Link to="/faculty">
+                        <a className="navbar-brand">College</a>
                     </Link>
                     <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
                     <li className="nav-item active">
-                        <Link to="/home">
-                            <a className="nav-link" >Assignment <span className="sr-only">(current)</span></a>
+                        <Link to="/semester">
+                            <a className="nav-link" >Semester  <span className="sr-only">(current)</span></a>
+                        </Link>
+                    </li>
+                    <li className="nav-item active">
+                        <Link to="/subject">
+                            <a className="nav-link" >Subject  <span className="sr-only">(current)</span></a>
                         </Link>
                     </li> 
-                    <li className="nav-item active">
-                        <Link to="/submission">
-                            <a className="nav-link">Submission <span className="sr-only">(current)</span></a>
-                        </Link>
-                    </li>                                        
+                                                                                                  
                     </ul>                    
                 </div>
             </nav>      

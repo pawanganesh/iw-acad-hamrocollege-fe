@@ -1,80 +1,81 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
-import {addAssigns} from '../../actions/assigns'
+import {addSubjects} from '../../actions/subjects'
 
- class Form extends Component {
+
+
+
+ class Subjectform extends Component {
      state = {
-         Title: '',
-         Sdate: '',
-         Ddate: '',
-         File: '',
+         Subjectcode: '',
+         Name: '',
+         Faculty: '',
+         Semester: ''
+         
          
      }
 
      static propTypes = {
-         addAssign: PropTypes.func.isRequired
+         addSubject: PropTypes.func.isRequired
      }
 
      onChange=e=> this.setState({ [e.target.name]: e.target.value })
      onSubmit = e => {
          e.preventDefault()
-         const{ title, sdate, ddate, file } = this.state
-         const assign= {title, sdate, ddate, file}
-         this.props.addAssigns(assign)
+         const{ subjectcode, name, faculty, semester } = this.state
+         const subjects= {subjectcode, name, faculty, semester }
+         this.props.addSubjects(subjects)
          
      }
 
 
     render() {
-        const {title, sdate, ddate, file } = this.state
+        const { subjectcode, name, faculty, semester } = this.state
         return (
             <div className="card card-body mt-4 mb-4">
-                <h2>Add Assignment</h2>
-                <form onSubmit={this.onSubmit}>
+                <h2>Add Subjects</h2>
+                <form onSubmit={this.onSubmit}>                    
                     <div className='form-group'>
-                        <label>Title</label>
+                        <label>Subject Code </label>
                         <input 
                         className="form-control"
                         type="text"
-                        name="title"
+                        name="subjectcode"
                         onChange={this.onChange}
-                        value={title}
-                        />                    
-   
+                        value={subjectcode}
+                        />    
                     </div>
                     <div className='form-group'>
-                        <label>Created Date</label>
+                        <label>Subject Name </label>
                         <input 
                         className="form-control"
-                        type="date"
-                        name="Sdate"
+                        type="text"
+                        name="name"
                         onChange={this.onChange}
-                        value={sdate}
-                        />                    
-   
+                        value={name}
+                        />    
                     </div>
                     <div className='form-group'>
-                        <label>Due Date</label>
+                        <label>Faculty </label>
                         <input 
                         className="form-control"
-                        type="date"
-                        name="Ddate"
+                        type="text"
+                        name="faculty"
                         onChange={this.onChange}
-                        value={ddate}
-                        />                    
-   
+                        value={faculty}
+                        />    
                     </div>
                     <div className='form-group'>
-                        <label>Upload</label>
+                        <label>Semester </label>
                         <input 
                         className="form-control"
-                        type="file"
-                        name="file"
+                        type="text"
+                        name="semester"
                         onChange={this.onChange}
-                        value={file}
-                        />
-                    </div>
+                        value={semester}
+                        />    
+                    </div>                   
                     <div className="form-group">
                         <button type="submit" className="btn btn-primary">
                             Submit
@@ -86,4 +87,4 @@ import {addAssigns} from '../../actions/assigns'
     }
 }
 
-export default connect(null, {addAssigns}) (Form)
+export default connect(null, {addSubjects}) (Subjectform)

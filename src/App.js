@@ -3,10 +3,12 @@ import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import './App.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import Header from './components/layout/Header'
-import Dashboard from './components/assign/Dashboard'
+// import Dashboard from './components/assign/Dashboard'
 import {Provider} from 'react-redux'
 import store from './store'
-import Submission from './components/submit/Submission'
+import Faculty from './components/Faculty'
+import Semester from './components/Semester/Semester'
+import Subject from './components/Subject/Subject'
 
 
 
@@ -18,9 +20,10 @@ function App() {
         {/* <div className='container'>
           
         </div>  */}
-        <Switch>
-            <Route exact path="/home" component={Dashboard} />
-            <Route exact path="/submission" component={Submission} />
+        <Switch>            
+            <Route exact path="/faculty" component={Faculty} />
+            <Route exact path="/semester" component={Semester} />  
+            <Route exact path="/subject" component={Subject} />          
         </Switch>
       </Router>
     </Provider>
