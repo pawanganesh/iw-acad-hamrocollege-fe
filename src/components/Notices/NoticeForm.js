@@ -8,10 +8,10 @@ import { addNotice } from "../../actions/notices";
 class NoticeForm extends Component {
   state = {
     text: "",
-    file: null,
     category: "",
     author: this.props.auth.user.id,
     likes: [this.props.auth.user.id],
+    file: "",
   };
 
   static propTypes = {
@@ -25,31 +25,32 @@ class NoticeForm extends Component {
   }
 
   onChange = (e) => this.setState({ [e.target.name]: e.target.value });
-
-  handleChange = (e, data) =>
+  handleDropdownChange = (e, data) =>
     this.setState({
       [data.name]: data.value,
     });
 
+  handleFileChange = (e) =>
+    this.setState({
+      file: e.target.files[0],
+    });
+
   onFormSubmit = (e) => {
     e.preventDefault();
+    console.log(this.state);
     const { text, file, category, author, likes } = this.state;
 
-    const newNotice = {
-      text,
-      file,
-      category,
-      author,
-      likes,
-    };
-    this.props.addNotice(newNotice);
+    var form_data = new FormData();
+    form_data.append("text", text);
+    form_data.append("file", file);
+    form_data.append("category", category);
+    form_data.append("author", author);
+    form_data.append("likes", likes);
+
+    this.props.addNotice(form_data);
   };
   render() {
-    const { text, file, author } = this.state;
-    const { user } = this.props.auth;
-
-    console.log(author);
-    console.log(user.id);
+    const { text, file } = this.state;
 
     let dropdowns = this.props.categories;
     let optionCategories = dropdowns.map((dropdown) => {
@@ -76,7 +77,7 @@ class NoticeForm extends Component {
                 fluid
                 selection
                 options={optionCategories}
-                onChange={this.handleChange}
+                onChange={this.handleDropdownChange}
                 name="category"
                 // value={}
               />
@@ -96,8 +97,8 @@ class NoticeForm extends Component {
                 label="Upload File"
                 placeholder="File"
                 name="file"
-                value={file}
-                onChange={this.onChange}
+                // value={file || ""}
+                onChange={this.handleFileChange}
               ></Form.Input>
 
               {/* <Form.Input

@@ -69,10 +69,7 @@ export const getCategory = () => (dispatch, getState) => {
 
 // ADD NOTICE
 
-export const addNotice = ({ text, file, category, author, likes }) => (
-  dispatch,
-  getState
-) => {
+export const addNotice = (body) => (dispatch, getState) => {
   // // Headers
   // const config = {
   //   headers: {
@@ -81,7 +78,7 @@ export const addNotice = ({ text, file, category, author, likes }) => (
   // };
 
   // Request Body
-  const body = JSON.stringify({ text, file, category, author, likes });
+  // const body = JSON.stringify({ text, file, category, author, likes });
 
   axios
     .post("http://127.0.0.1:8000/api/notice/", body, tokenConfig(getState))
