@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from "prop-types";
 import { getClassrooms, deleteClassroom } from "../../actions/Classroom";
-import { Table, Icon } from "semantic-ui-react";
+import { Table, } from "semantic-ui-react";
 
 
 class ClassroomView extends Component {
@@ -12,6 +12,7 @@ class ClassroomView extends Component {
 
     componentDidMount() {
         this.props.getClassrooms();
+        
     }
 
     render() {
@@ -27,25 +28,24 @@ class ClassroomView extends Component {
                             <Table.HeaderCell>Section</Table.HeaderCell>
                             <Table.HeaderCell>Creator</Table.HeaderCell>
                             <Table.HeaderCell>Created_at</Table.HeaderCell>
-                           
                         </Table.Row>
                     </Table.Header>
 
                     <Table.Body>
-                        {this.props.classrooms.map((classroom) => (
+                        {this.props.classrooms.map((classrooms) => (
                         <Table.Row>
-                            <Table.Cell>classroom.id</Table.Cell>
-                            <Table.Cell>classroom.title</Table.Cell>
-                            <Table.Cell>classroom.subject</Table.Cell>
-                            <Table.Cell>classroom.faculty</Table.Cell>
-                            <Table.Cell>classroom.section</Table.Cell>
-                            <Table.Cell>classroom.creator</Table.Cell>
-                            <Table.Cell>classroom.created_at</Table.Cell>
+                            <Table.Cell>{classrooms.id}</Table.Cell> 
+                            <Table.Cell>{classrooms.title}</Table.Cell>
+                            <Table.Cell>{classrooms.subject}</Table.Cell>
+                            <Table.Cell>{classrooms.faculty}</Table.Cell>
+                            <Table.Cell>{classrooms.section}</Table.Cell>
+                            <Table.Cell>{classrooms.creator}</Table.Cell>
+                            <Table.Cell>{classrooms.created_at}</Table.Cell>
                             <Table.Cell>
-                                <Icon name='add circle'>
+                                {/* <Icon name='add circle'>
                                 <button onClick={this.props.deleteClassroom.bind(this,classroom.id) }></button>
-                                </Icon>
-                                <button onClick={this.props.deleteClassroom.bind(this,classroom.id)}>Delete</button>
+                                </Icon> */}
+                                <button onClick={this.props.deleteClassroom.bind(this,classrooms.id)}>Delete</button>
                             </Table.Cell>
                             
                         </Table.Row>

@@ -1,23 +1,23 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component, } from 'react';
 
 
 import Header from "./layout/Header";
 import Footer from "./layout/Footer";
-import Home from "../components/Home";
 
 import { Container } from "semantic-ui-react";
+import Routes from '../routes';
 
 
 class App extends Component{
   render(){
     return(
-      <Fragment>
+      <>
         <Header />
         <Container>
-          <Home />
+          <Routes/>
         </Container>
         <Footer />
-      </Fragment>
+      </>
     );
   }
 }

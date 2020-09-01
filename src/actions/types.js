@@ -1,5 +1,9 @@
 export const GET_CLASSROOMS = "GET_CLASSROOMS";
 export const DELETE_CLASSROOMS = "GET_CLASSROOMS";
+export const ADD_CLASSROOM_SUCCESS = "ADD_CLASSROOM_SUCCESS";
 
 export const GET_CLUBS = "GET_CLUBS";
 export const DELETE_CLUBS = "DELETE_CLUBS";
+export const ADD_CLUB_SUCCESS = "ADD_CLUB_SUCCESS";
+
+export const GET_USERS = "GET_USERS";

@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { Menu } from 'semantic-ui-react'
+import { NavLink } from 'react-router-dom'
+
 
 export default class MenuExampleInverted extends Component {
   state = { activeItem: 'home' }
@@ -11,16 +13,21 @@ export default class MenuExampleInverted extends Component {
 
     return (
       <Menu inverted>
-        <Menu.Item
-          name='home'
-          active={activeItem === 'home'}
-          onClick={this.handleItemClick}
-        />
-        <Menu.Item
-          name='classrooms'
-          active={activeItem === 'classrooms'}
-          onClick={this.handleItemClick}
-        />
+        <NavLink to="/">
+          <Menu.Item
+            name='home'
+            active={activeItem === 'home'}
+            onClick={this.handleItemClick}
+          />
+        </NavLink>
+        <NavLink to="/classroom">
+          <Menu.Item
+            name='classrooms'
+            active={activeItem === 'classrooms'}
+            onClick={this.handleItemClick}
+          />
+        </NavLink>
+        
         <Menu.Item
           name='Clubs'
           active={activeItem === 'clubs'}
