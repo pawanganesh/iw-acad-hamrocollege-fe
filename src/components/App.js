@@ -7,6 +7,7 @@ import { Container } from "semantic-ui-react";
 import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import Register from "./accounts/Register";
 import Login from "./accounts/Login";
+import UserProfile from "./accounts/UserProfile";
 import PrivateRoute from "./common/PrivateRoute";
 import { loadUser } from "../actions/auth";
 import store from "../store";
@@ -28,6 +29,11 @@ class App extends Component {
               <PrivateRoute exact path="/" component={Home} />
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
+              <PrivateRoute
+                // exact
+                path="/userprofile/:username"
+                component={UserProfile}
+              />
             </Switch>
           </Container>
           <Footer />

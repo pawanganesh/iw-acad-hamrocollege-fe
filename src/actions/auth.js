@@ -10,6 +10,7 @@ import {
   LOGOUT_SUCCESS,
   REGISTER_SUCCESS,
   GET_ERRORS,
+  GET_USERPROFILE,
 } from "./types";
 
 //CHECK TOKEN & LOAD USER
@@ -151,4 +152,21 @@ export const register = ({ first_name, last_name, email, password }) => (
         payload: errors,
       });
     });
+};
+
+//GET USER DETAILS
+
+export const getUserProfile = (username) => (dispatch, getState) => {
+  axios
+    .get(
+      `http://127.0.0.1:8000/api/auth/userprofile/${username}`,
+      tokenConfig(getState)
+    )
+    .then((res) => {
+      dispatch({
+        type: GET_USERPROFILE,
+        payload: res.data,
+      });
+    })
+    .catch((err) => console.log(err));
 };

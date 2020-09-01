@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { logout } from "../../actions/auth";
+import { getUserProfile } from "../../actions/auth";
 
 class Header extends Component {
   state = {
@@ -41,7 +42,12 @@ class Header extends Component {
               className="link item"
             >
               <Dropdown.Menu>
-                <Dropdown.Item text="Profile" />
+                <Dropdown.Item
+                  text="Profile"
+                  as={Link}
+                  to={`/userprofile/${user.username}`}
+                  onClick={this.props.getUserProfile.bind(this, user.username)}
+                />
 
                 <Modal
                   trigger={<Dropdown.Item text="Logout" />}
@@ -94,4 +100,4 @@ const mapStateToProps = (state) => ({
   auth: state.auth,
 });
 
-export default connect(mapStateToProps, { logout })(Header);
+export default connect(mapStateToProps, { logout, getUserProfile })(Header);

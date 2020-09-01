@@ -15,3 +15,4 @@ export const ADD_NOTICE = "ADD_NOTICE";
 export const CLEAR_NOTICE = "CLEAR_NOTICE";
 export const GET_CATEGORY = "GET_CATEGORY";
 export const ADD_NOTICE_SUCCESS = "ADD_NOTICE_SUCCESS";
+export const GET_USERPROFILE = "GET_USERPROFILE";

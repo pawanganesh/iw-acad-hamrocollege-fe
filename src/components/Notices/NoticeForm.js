@@ -50,7 +50,7 @@ class NoticeForm extends Component {
     this.props.addNotice(form_data);
   };
   render() {
-    const { text, file } = this.state;
+    const { text } = this.state;
 
     let dropdowns = this.props.categories;
     let optionCategories = dropdowns.map((dropdown) => {

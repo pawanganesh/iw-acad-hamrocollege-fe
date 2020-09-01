@@ -2,6 +2,8 @@ import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { getNotices, deleteNotice } from "../../actions/notices";
+import { getUserProfile } from "../../actions/auth";
+
 import {
   Feed,
   Icon,
@@ -14,8 +16,8 @@ import NoticeForm from "./NoticeForm";
 
 class Notices extends Component {
   static propTypes = {
-    notices: PropTypes.array.isRequired,
     auth: PropTypes.object.isRequired,
+    notices: PropTypes.array.isRequired,
   };
 
   componentDidMount() {
@@ -24,6 +26,12 @@ class Notices extends Component {
 
   render() {
     const { user } = this.props.auth;
+    //  console.log("this.props.notices", this.props.notices);
+    // console.log("this.props.notices.results", this.props.notices.results);
+    // console.log(results);
+    // const { results } = this.props.notices;
+
+    // console.log(this.props.notices);
 
     return (
       <Fragment>
@@ -38,7 +46,16 @@ class Notices extends Component {
                 <Feed.Event>
                   <Feed.Content>
                     <Feed.Summary>
-                      <a href="/">{notice.notice_owner}</a> has posted notice
+                      <a
+                        href={"#/userprofile/" + notice.notice_owner}
+                        onClick={this.props.getUserProfile.bind(
+                          this,
+                          notice.notice_owner
+                        )}
+                      >
+                        {notice.notice_owner}
+                      </a>{" "}
+                      has posted notice
                       <Feed.Date>
                         Date Published: {notice.date_published}
                       </Feed.Date>
@@ -80,8 +97,12 @@ class Notices extends Component {
 
 const mapStateToProps = (state) => ({
   // console.log(state)
-  notices: state.notices.notices,
   auth: state.auth,
+  notices: state.notices.notices,
 });
 
-export default connect(mapStateToProps, { getNotices, deleteNotice })(Notices);
+export default connect(mapStateToProps, {
+  getNotices,
+  deleteNotice,
+  getUserProfile,
+})(Notices);

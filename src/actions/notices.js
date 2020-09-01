@@ -12,7 +12,7 @@ import {
 //GET NOTICES
 export const getNotices = () => (dispatch, getState) => {
   axios
-    .get("http://127.0.0.1:8000/api/notice/", tokenConfig(getState))
+    .get(`http://127.0.0.1:8000/api/notice/`, tokenConfig(getState))
     .then((res) => {
       dispatch({
         type: GET_NOTICES,
