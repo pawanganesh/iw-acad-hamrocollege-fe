@@ -1,19 +1,17 @@
 import React, { Fragment, Component } from "react";
-import { Button, Form, Dropdown,  } from "semantic-ui-react";
+import { Button, Form, Dropdown } from "semantic-ui-react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { getClassrooms, addClassroom } from "../../actions/Classroom";
-
-
 
 class ClassroomForm extends Component {
   state = {
     title: "",
     creator: "",
-    faculty:"",
-    section:"",
-    subject:"",
-    passcode:""
+    faculty: "",
+    section: "",
+    subject: "",
+    passcode: "",
   };
 
   static propTypes = {
@@ -24,15 +22,16 @@ class ClassroomForm extends Component {
     addClassroom: PropTypes.func.isRequired,
   };
 
-  componentDidMount(){
+  componentDidMount() {
     this.props.getClassrooms();
   }
 
   onChange = (e) => this.setState({ [e.target.name]: e.target.value });
 
-  handleDropdownChange = (e, data) => this.setState({
-    [data.name]:data.value,
-  });
+  handleDropdownChange = (e, data) =>
+    this.setState({
+      [data.name]: data.value,
+    });
 
   onFormSubmit = (e) => {
     e.preventDefault();
@@ -47,22 +46,23 @@ class ClassroomForm extends Component {
     form_data.append("subject", subject);
     form_data.append("passcode", passcode);
 
-
     this.props.addClassroom(form_data);
-
   };
 
   render() {
-
-    const { title, } = this.state;
+    const { title } = this.state;
 
     let userDropdowns = this.props.classrooms;
     // let facultyDropdowns = this.props.classrooms;
     // let sectionDropdowns = this.props.classrooms;
     // let subjectDropdowns = this.props.classrooms;
-    
+
     let optionUsers = userDropdowns.map((userdropdown) => {
-      return { key: userdropdown.id, value:userdropdown.id, text:userdropdown.user };
+      return {
+        key: userdropdown.id,
+        value: userdropdown.id,
+        text: userdropdown.user,
+      };
     });
     // let optionFaculty = facultyDropdowns.map((facultydropdown) => {
     //   return { key: facultydropdown.id, value:facultydropdown.id, text: facultydropdown.user };
@@ -74,29 +74,28 @@ class ClassroomForm extends Component {
     //   return { key: subjectdropdown.id, value:subjectdropdown.id, text: subjectdropdown.user };
     // });
 
-    
-
     return (
-      
       <Fragment>
         <p>hello</p>
         <h2> Add Classroom</h2>
-         <Form onSubmit={this.onFormSubmit}> 
+        <Form onSubmit={this.onFormSubmit}>
           <Form.Field>
-              <label>Title</label>
-              <input placeholder="Classroom Title" name = 'title' value = {title} onChange={this.onChange} />
+            <label>Title</label>
+            <input
+              placeholder="Classroom Title"
+              name="title"
+              value={title}
+              onChange={this.onChange}
+            />
           </Form.Field>
           <Form.Field>
-                    <Dropdown>
-                      placeholder="Choose User"
-                      fluid
-                      selection
-                      options= {optionUsers}
-                      onChange={this.handleDropdownChange}
-                      name='user'
-                    </Dropdown>
+            <Dropdown>
+              placeholder="Choose User" fluid selection options= {optionUsers}
+              onChange={this.handleDropdownChange}
+              name='user'
+            </Dropdown>
           </Form.Field>
-         
+
           {/* <Form.Field>
           <Dropdown>
                       placeholder="Choose Faculty"
@@ -128,7 +127,7 @@ class ClassroomForm extends Component {
                       name='subject'
                     </Dropdown>
           </Form.Field> */}
-          
+
           <hr />
           <Button type="submit">Submit</Button>
         </Form>
@@ -138,12 +137,12 @@ class ClassroomForm extends Component {
 }
 
 const mapStateToProps = (state) => ({
-
   users: state.classrooms.classrooms,
   faculty: state.classrooms.classrooms,
   section: state.classrooms.classrooms,
   subject: state.classrooms.classrooms,
 });
 
-
-export default connect(mapStateToProps, {getClassrooms, addClassroom })(ClassroomForm);
+export default connect(mapStateToProps, { getClassrooms, addClassroom })(
+  ClassroomForm
+);
