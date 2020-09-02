@@ -27,17 +27,20 @@ export default class MenuExampleInverted extends Component {
             onClick={this.handleItemClick}
           />
         </NavLink>
-        
+        <NavLink to="/clubs">
         <Menu.Item
           name='Clubs'
           active={activeItem === 'clubs'}
           onClick={this.handleItemClick}
         />
+        </NavLink>
+        <NavLink to="/attendance">
         <Menu.Item
           name='attendance'
           active={activeItem === 'attendance'}
           onClick={this.handleItemClick}
         />
+        </NavLink>
       </Menu>
     )
   }

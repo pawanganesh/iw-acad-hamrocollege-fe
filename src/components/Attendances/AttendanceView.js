@@ -1,25 +1,22 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from "prop-types";
-import { getClubs, deleteClub } from "../../actions/Clubs";
-import { Table, Container, Icon } from "semantic-ui-react";
+import { getAttendance, } from "../../actions/Attendance";
+import { Table, Icon } from "semantic-ui-react";
 
 
-class ClubView extends Component {
+class AttendanceView extends Component {
     static propTypes ={
-        clubs: PropTypes.array.isRequired,
+        attendance: PropTypes.array.isRequired,
     };
 
     componentDidMount() {
-        this.props.getClubs();
+        this.props.getAttendance();
     }
 
     render() {
         return (
             <Fragment>
-                 <Container>
-                    <h1>List of Clubs</h1>
-                </Container>
                 <Table celled>
                     <Table.Header>
                         <Table.Row>
@@ -31,17 +28,17 @@ class ClubView extends Component {
                         </Table.Row>
                     </Table.Header>
 
-                    <Table.Body>
+                    {/* <Table.Body>
                         {this.props.clubs.map((club) => (
                         <Table.Row>
-                            <Table.Cell>{club.id}</Table.Cell>
-                            <Table.Cell>{club.title}</Table.Cell>
-                            <Table.Cell>{club.creator}</Table.Cell>
-                            <Table.Cell>{club.created_at}</Table.Cell>
+                            <Table.Cell>club.id</Table.Cell>
+                            <Table.Cell>club.title</Table.Cell>
+                            <Table.Cell>club.creator</Table.Cell>
+                            <Table.Cell>club.created_at</Table.Cell>
                             <Table.Cell>
-                                {/* <Icon name='add circle'>
+                                <Icon name='add circle'>
                                 <button onClick={this.props.deleteClub.bind(this,club.id) }></button>
-                                </Icon> */}
+                                </Icon>
                                 <button onClick={this.props.deleteClub.bind(this,club.id)}>Delete</button>
                             </Table.Cell>
                             
@@ -50,7 +47,7 @@ class ClubView extends Component {
                         
                         ))}
                     
-                    </Table.Body>
+                    </Table.Body> */}
                 </Table>
             </Fragment>
         );
@@ -59,7 +56,7 @@ class ClubView extends Component {
 
 
 const mapStateToProps = (state) => ({
-    clubs: state.clubs.clubs
+    attendance: state.attendance.attendance
 });
 
-export default connect (mapStateToProps, { getClubs, deleteClub }) (ClubView)
+export default connect (mapStateToProps, { getAttendance, }) (AttendanceView)

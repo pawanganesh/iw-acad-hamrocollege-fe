@@ -2,7 +2,8 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from "prop-types";
 import { getClassrooms, deleteClassroom } from "../../actions/Classroom";
-import { Table, } from "semantic-ui-react";
+import { Table, Container, } from "semantic-ui-react";
+
 
 
 class ClassroomView extends Component {
@@ -18,6 +19,9 @@ class ClassroomView extends Component {
     render() {
         return (
             <Fragment>
+                <Container>
+                    <h1>List of Classrooms</h1>
+                </Container>
                 <Table celled>
                     <Table.Header>
                         <Table.Row>

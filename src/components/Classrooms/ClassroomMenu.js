@@ -20,7 +20,7 @@ class ClassroomMenu extends Component {
               name='Home'
               active={activeItem === 'Home'}
               onClick={this.handleItemClick}
-              icon='home circle'
+              icon='home'
             />
           </NavLink>
           <NavLink to="/classroom/add-classroom">
@@ -44,7 +44,7 @@ class ClassroomMenu extends Component {
               name='Discussion Forum'
               active={activeItem === 'Discussion Forum'}
               onClick={this.handleItemClick}
-              icon='group circle'
+              icon='group'
             />
             </NavLink>
         </Menu>

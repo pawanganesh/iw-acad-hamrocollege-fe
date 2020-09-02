@@ -2,30 +2,33 @@ import React, { Fragment, Component } from "react";
 import { Button, Form, Dropdown,  } from "semantic-ui-react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { getClassrooms, addClassroom } from "../../actions/Classroom";
+import { getFaculty, getSection, getSubject, addClassroom } from "../../actions/Classroom";
 
 
 
 class ClassroomForm extends Component {
   state = {
     title: "",
-    creator: "",
-    faculty:"",
-    section:"",
-    subject:"",
-    passcode:""
+    // creator: "",
+    // faculty:'',
+    // section:"",
+    // subject:"",
+    // passcode:""
   };
 
   static propTypes = {
-    creators: PropTypes.array.isRequired,
+    // creator: PropTypes.array.isRequired,
     faculty: PropTypes.array.isRequired,
     section: PropTypes.array.isRequired,
-    // subject: PropTypes.array.isRequired,
+    subject: PropTypes.array.isRequired,
     addClassroom: PropTypes.func.isRequired,
   };
 
   componentDidMount(){
-    this.props.getClassrooms();
+    this.props.getFaculty();
+    this.props.getSection();
+    this.props.getSubject();
+    
   }
 
   onChange = (e) => this.setState({ [e.target.name]: e.target.value });
@@ -37,11 +40,13 @@ class ClassroomForm extends Component {
   onFormSubmit = (e) => {
     e.preventDefault();
     console.log(this.state);
-    const { title, creator, faculty, section, subject, passcode } = this.state;
+    // const { title, faculty } = this.state;
+    const { title, faculty, section, subject, passcode } = this.state;
+
 
     var form_data = new FormData();
     form_data.append("title", title);
-    form_data.append("creator", creator);
+    // form_data.append("creator", creator);
     form_data.append("faculty", faculty);
     form_data.append("section", section);
     form_data.append("subject", subject);
@@ -56,81 +61,90 @@ class ClassroomForm extends Component {
 
     const { title, } = this.state;
 
-    let userDropdowns = this.props.classrooms;
-    // let facultyDropdowns = this.props.classrooms;
-    // let sectionDropdowns = this.props.classrooms;
-    // let subjectDropdowns = this.props.classrooms;
     
-    let optionUsers = userDropdowns.map((userdropdown) => {
-      return { key: userdropdown.id, value:userdropdown.id, text:userdropdown.user };
+    // let userDropdowns = this.props.users;
+    let facultyDropdowns = this.props.faculty;
+    let sectionDropdowns = this.props.section;
+    let subjectDropdowns = this.props.subject;
+    // console.log(this.props.faculty)
+    // console.log("logs::",facultyDropdowns)
+    // console.log(sectionDropdowns)
+    
+    // let optionUsers = sectionDropdowns.map((userdropdown) => {
+    //   return { key: userdropdown.id, value: userdropdown.id, text: userdropdown.first_name };
+    // });
+
+    let optionFaculty = facultyDropdowns.map((facultydropdown) => {
+      return { key: facultydropdown.id, value:facultydropdown.id, text: facultydropdown.name };
     });
-    // let optionFaculty = facultyDropdowns.map((facultydropdown) => {
-    //   return { key: facultydropdown.id, value:facultydropdown.id, text: facultydropdown.user };
-    // });
-    // let optionSection = sectionDropdowns.map((sectiondropdown) => {
-    //   return { key: sectiondropdown.id, value:sectiondropdown.id, text: sectiondropdown.user };
-    // });
-    // let optionSubject = subjectDropdowns.map((subjectdropdown) => {
-    //   return { key: subjectdropdown.id, value:subjectdropdown.id, text: subjectdropdown.user };
-    // });
+
+    
+
+    let optionSection = sectionDropdowns.map((sectiondropdown) => {
+      return { key: sectiondropdown.id, value:sectiondropdown.id, text: sectiondropdown.section };
+    });
+
+    console.log('section::',optionSection)
+
+    let optionSubject = subjectDropdowns.map((subjectdropdown) => {
+      return { key: subjectdropdown.id, value:subjectdropdown.id, text: subjectdropdown.name };
+    });
 
     
 
     return (
-      
       <Fragment>
-        <p>hello</p>
         <h2> Add Classroom</h2>
-         <Form onSubmit={this.onFormSubmit}> 
+        <Form onSubmit={this.onFormSubmit}>
           <Form.Field>
-              <label>Title</label>
-              <input placeholder="Classroom Title" name = 'title' value = {title} onChange={this.onChange} />
+            <label>Title</label>
+            <input placeholder="Classroom Title" name = 'title' value = {title} onChange={this.onChange} />
           </Form.Field>
-          <Form.Field>
-                    <Dropdown>
-                      placeholder="Choose User"
-                      fluid
-                      selection
-                      options= {optionUsers}
-                      onChange={this.handleDropdownChange}
-                      name='user'
-                    </Dropdown>
-          </Form.Field>
-         
-          {/* <Form.Field>
-          <Dropdown>
-                      placeholder="Choose Faculty"
-                      fluid
-                      selection
-                      options= {optionFaculty}
-                      onChange={this.handleDropdownChange}
-                      name='faculty'
-                    </Dropdown>
-          </Form.Field>
-
-          <Form.Field>
-          <Dropdown>
-                      placeholder="Choose Section"
-                      fluid
-                      selection
-                      options= {optionSection}
-                      onChange={this.handleDropdownChange}
-                      name='section'
-                    </Dropdown>
-          </Form.Field>
-          <Form.Field>
-          <Dropdown>
-                      placeholder="Choose Subject"
-                      fluid
-                      selection
-                      options= {optionSubject}
-                      onChange={this.handleDropdownChange}
-                      name='subject'
-                    </Dropdown>
-          </Form.Field> */}
           
-          <hr />
+          {/* <Dropdown
+              placeholder="Choose User"
+              fluid
+              selection
+              options= { optionUsers }
+              onChange={this.handleDropdownChange}
+              name='user'
+          /> */}
+          <Form.Field label='Faculty' />
+          <Dropdown
+              placeholder="Choose Faculty"
+              fluid
+              selection
+              options= { optionFaculty }
+              onChange={this.handleDropdownChange}
+              name='faculty'
+          />
+          <br/>
+
+          <Form.Field label='Section' />
+          <Dropdown
+              label='Section'
+              placeholder="Choose Section"
+              fluid
+              selection
+              options= {optionSection}
+              onChange={this.handleDropdownChange}
+              name='section'
+          />
+          <br/>
+          <Form.Field label='Subject' />
+          <Dropdown
+              label='Subject'
+              placeholder="Choose Subject"
+              fluid
+              selection
+              options= {optionSubject}
+              onChange={this.handleDropdownChange}
+              name='subject'
+          />
+        
+          <br />
           <Button type="submit">Submit</Button>
+
         </Form>
       </Fragment>
     );
@@ -139,11 +153,13 @@ class ClassroomForm extends Component {
 
 const mapStateToProps = (state) => ({
 
-  users: state.classrooms.classrooms,
-  faculty: state.classrooms.classrooms,
-  section: state.classrooms.classrooms,
-  subject: state.classrooms.classrooms,
+  // users: state.users.users,
+  faculty: state.faculty.faculty,
+  section: state.section.section,
+  subject: state.subject.subject
 });
 
 
-export default connect(mapStateToProps, {getClassrooms, addClassroom })(ClassroomForm);
+export default connect(mapStateToProps, { getFaculty, getSection, getSubject, addClassroom })(ClassroomForm);
+
+// 
