@@ -1,27 +1,27 @@
-import { GET_FACULTYS, DELETE_FACULTYS, ADD_FACULTYS} from '../actions/types'
+import { GET_PUBLISHERS, DELETE_PUBLISHERS, ADD_PUBLISHERS} from '../actions/types'
 
     const initialState= {
-        facultys:[]
+        publishers:[]
 
     }
 
     export default function(state= initialState, action){
         switch(action.type){
-            case GET_FACULTYS:
+            case GET_PUBLISHERS:
                 return {
                     ...state,
-                    facultys: action.payload
+                    publishers: action.payload
                 }
-            case DELETE_FACULTYS:
+            case DELETE_PUBLISHERS:
                 return {
                     ...state,
-                    facultys: state.facultys.filter((faculty) => faculty.id !== action.payload),
+                    publishers: state.publishers.filter((publisher) => publisher.id !== action.payload),
                 };  
             
-            case ADD_FACULTYS:
+            case ADD_PUBLISHERS:
                 return {
                     ...state,
-                    facultys: [...state.facultys, action.payload]
+                    publishers: [...state.publishers, action.payload]
                 };                 
 
             default:

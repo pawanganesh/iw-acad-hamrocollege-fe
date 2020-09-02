@@ -9,21 +9,35 @@ class Header extends Component {
                 <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-                    <Link to="/faculty">
-                        <a className="navbar-brand">College</a>
+                    <Link to="/author">
+                        <a className="navbar-brand">Library</a>
                     </Link>
                     <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
                     <li className="nav-item active">
-                        <Link to="/semester">
-                            <a className="nav-link" >Semester  <span className="sr-only">(current)</span></a>
+                        <Link to="/author">
+                            <a className="nav-link" >Authors  <span className="sr-only">(current)</span></a>
                         </Link>
                     </li>
                     <li className="nav-item active">
-                        <Link to="/subject">
-                            <a className="nav-link" >Subject  <span className="sr-only">(current)</span></a>
+                        <Link to="/publisher">
+                            <a className="nav-link" >Publisher  <span className="sr-only">(current)</span></a>
                         </Link>
                     </li> 
-                                                                                                  
+                    <li className="nav-item active">
+                        <Link to="/book">
+                            <a className="nav-link" >Book  <span className="sr-only">(current)</span></a>
+                        </Link>
+                    </li>  
+                    <li className="nav-item active">
+                        <Link to="/request">
+                            <a className="nav-link" >Request  <span className="sr-only">(current)</span></a>
+                        </Link>
+                    </li>   
+                    <li className="nav-item active">
+                        <Link to="/issue">
+                            <a className="nav-link" >Book Issued  <span className="sr-only">(current)</span></a>
+                        </Link>
+                    </li>                                                                    
                     </ul>                    
                 </div>
             </nav>      

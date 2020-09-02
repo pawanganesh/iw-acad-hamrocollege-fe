@@ -1,27 +1,27 @@
-import { GET_SEMESTERS, DELETE_SEMESTERS, ADD_SEMESTERS} from '../actions/types'
+import { GET_AUTHORS, ADD_AUTHORS, DELETE_AUTHORS} from '../actions/types'
 
     const initialState= {
-        semesters:[]
+        authors:[]
 
     }
 
     export default function(state= initialState, action){
         switch(action.type){
-            case GET_SEMESTERS:
+            case GET_AUTHORS:
                 return {
                     ...state,
-                    semesters: action.payload
+                    authors: action.payload
                 }
-            case DELETE_SEMESTERS:
+            case DELETE_AUTHORS:
                 return {
                     ...state,
-                    semesters: state.semesters.filter((semester) => semester.id !== action.payload),
+                    authors: state.authors.filter((author) => author.id !== action.payload),
                 };  
             
-            case ADD_SEMESTERS:
+            case ADD_AUTHORS:
                 return {
                     ...state,
-                    semesters: [...state.semesters, action.payload]
+                    authors: [...state.authors, action.payload]
                 };                 
 
             default:

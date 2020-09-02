@@ -1,48 +1,61 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
-import {addSemesters} from '../../actions/semesters'
+import {addAuthors} from '../../actions/authors'
 
 
 
 
- class Semesterform extends Component {
+ class Authorform extends Component {
      state = {
-         Semester: '',
+         Firstname: '',
+         Lastname: '',
+         
          
          
      }
 
      static propTypes = {
-         addSemester: PropTypes.func.isRequired
+         addAuthor: PropTypes.func.isRequired
      }
 
      onChange=e=> this.setState({ [e.target.name]: e.target.value })
      onSubmit = e => {
          e.preventDefault()
-         const{ semester } = this.state
-         const semesters= {semester}
-         this.props.addSemesters(semesters)
+         const{firstname, lastname} = this.state
+         const authors= {firstname, lastname}
+         this.props.addAuthors(authors)
          
      }
 
 
     render() {
-        const { semester } = this.state
+        const { firstname, lastname } = this.state
         return (
             <div className="card card-body mt-4 mb-4">
-                <h2>Add Semester</h2>
+                <h2>Add Author</h2>
                 <form onSubmit={this.onSubmit}>                    
                     <div className='form-group'>
-                        <label>Semester </label>
+                        <label>Firstname </label>
                         <input 
                         className="form-control"
                         type="text"
-                        name="semester"
+                        name="firstname"
                         onChange={this.onChange}
-                        value={semester}
+                        value={firstname}
                         />    
                     </div>
+                    <div className='form-group'>
+                        <label>Lastname </label>
+                        <input 
+                        className="form-control"
+                        type="text"
+                        name="lastname"
+                        onChange={this.onChange}
+                        value={lastname}
+                        />    
+                    </div>                        
+                                       
                     <div className="form-group">
                         <button type="submit" className="btn btn-primary">
                             Submit
@@ -54,4 +67,4 @@ import {addSemesters} from '../../actions/semesters'
     }
 }
 
-export default connect(null, {addSemesters}) (Semesterform)
+export default connect(null, {addAuthors}) (Authorform)

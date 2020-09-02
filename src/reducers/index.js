@@ -1,12 +1,17 @@
 import { combineReducers } from "redux";
-import facultys from './facultys' 
-import semesters from './semesters'
-import subjects from './subjects' 
+import authors from './authors' 
+import publishers from './publishers'
+import books from './books' 
+import requests from './requests' 
+import issues from './issues' 
 
 
 export default combineReducers({
-    facultys,
-    semesters,
-    subjects  
+    authors,
+    publishers,
+    books,
+    requests,
+    issues
+    // subjects  
 
 });

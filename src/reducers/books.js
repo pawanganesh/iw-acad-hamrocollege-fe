@@ -1,27 +1,27 @@
-import { GET_SUBJECTS, DELETE_SUBJECTS, ADD_SUBJECTS} from '../actions/types'
+import { GET_BOOKS, ADD_BOOKS, DELETE_BOOKS} from '../actions/types'
 
     const initialState= {
-        subjects:[]
+       books:[]
 
     }
 
     export default function(state= initialState, action){
         switch(action.type){
-            case GET_SUBJECTS:
+            case GET_BOOKS:
                 return {
                     ...state,
-                    subjects: action.payload
+                    books: action.payload
                 }
-            case DELETE_SUBJECTS:
+            case DELETE_BOOKS:
                 return {
                     ...state,
-                    subjects: state.subjects.filter((subject) => subject.id !== action.payload),
+                    books: state.books.filter((book) => book.id !== action.payload),
                 };  
             
-            case ADD_SUBJECTS:
+            case ADD_BOOKS:
                 return {
                     ...state,
-                    subjects: [...state.subjects, action.payload]
+                    books: [...state.books, action.payload]
                 };                 
 
             default:
