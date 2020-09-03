@@ -3,14 +3,7 @@ import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
-import {
-  Container,
-  Header,
-  //   Segment,
-  Card,
-  Image,
-  //   Icon,
-} from "semantic-ui-react";
+import { Container, Card, Image } from "semantic-ui-react";
 
 class UserProfile extends Component {
   static propTypes = {
