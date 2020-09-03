@@ -109,7 +109,7 @@ export const getSubject = () => dispatch => {
 };
 
 
-export const addMember = (member) => (dispatch) => {
+export const addClassMember = (member) => (dispatch) => {
     axios
     .post("http://127.0.0.1:8000/api/class/",member)
     .then((res) => {

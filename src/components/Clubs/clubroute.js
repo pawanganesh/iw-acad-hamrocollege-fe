@@ -8,7 +8,6 @@ import { Switch, Route } from "react-router-dom";
 const ClubRoutes = () => {
   return (
     <Switch>
-      
       <Route path="/club" component={ClubView} exact/>
       <Route path="/club/add-new-club" component={ClubForm} exact/>
       <Route path="/club/add-new-member" component={MemberForm} exact/>

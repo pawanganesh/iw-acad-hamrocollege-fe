@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Menu, } from 'semantic-ui-react';
 import { NavLink } from 'react-router-dom';
 
@@ -11,6 +11,7 @@ class ClubMenu extends Component {
     const { activeItem } = this.state
 
     return (
+      <Fragment>
       <Menu tabular>
         <NavLink to="/club">
         <Menu.Item
@@ -45,6 +46,7 @@ class ClubMenu extends Component {
         />
         </NavLink>
       </Menu>
+      </Fragment>
     )
   }
 }

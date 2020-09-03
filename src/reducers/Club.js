@@ -1,4 +1,4 @@
-import { GET_CLUBS, DELETE_CLUBS } from "../actions/types"
+import { GET_CLUBS, DELETE_CLUB } from "../actions/types"
 
 const initialState={
     clubs:[],
@@ -16,7 +16,7 @@ const clubReducer = (state= initialState, action) => {
             };
         }
 
-        case DELETE_CLUBS: {
+        case DELETE_CLUB: {
             return {
                 ...state,
                 clubs: state.classrooms.filter((club) => club.id !== action.payload),

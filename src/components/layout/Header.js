@@ -27,7 +27,7 @@ export default class MenuExampleInverted extends Component {
             onClick={this.handleItemClick}
           />
         </NavLink>
-        <NavLink to="/clubs">
+        <NavLink to="/club">
         <Menu.Item
           name='Clubs'
           active={activeItem === 'clubs'}

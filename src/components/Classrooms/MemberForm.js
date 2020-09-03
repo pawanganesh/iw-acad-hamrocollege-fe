@@ -16,7 +16,7 @@ class MemberForm extends Component {
     // creator: PropTypes.array.isRequired,
     classroom: PropTypes.array.isRequired,
     
-    addMember: PropTypes.func.isRequired,
+    addClassMember: PropTypes.func.isRequired,
   };
 
   componentDidMount(){
@@ -44,7 +44,7 @@ class MemberForm extends Component {
     form_data.append("iscreator", iscreator);
     
 
-    this.props.addMember(form_data);
+    this.props.addClassMember(form_data);
 
   };
 
@@ -77,7 +77,7 @@ class MemberForm extends Component {
 
     return (
       <Fragment>
-        <h2> Add Member</h2>
+        <h2> Add Class Member</h2>
         <Form onSubmit={this.onFormSubmit}>
           
           <Form.Field label='Classroom' />
@@ -101,12 +101,12 @@ class MemberForm extends Component {
           />
           <br />
           <Checkbox 
-                label='Make my profile visible'
+                label='I am a creator'
                 name='iscreator'
                 value={iscreator}
             />
           <br />
-          <Button type="submit">Submit</Button>
+          <Button type="submit">ADD Member</Button>
 
         </Form>
       </Fragment>

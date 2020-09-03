@@ -17,7 +17,7 @@ class ClubView extends Component {
     render() {
         return (
             <Fragment>
-                 <Container>
+                <Container>
                     <h1>List of Clubs</h1>
                 </Container>
                 <Table celled>
@@ -27,7 +27,6 @@ class ClubView extends Component {
                             <Table.HeaderCell>Name</Table.HeaderCell>
                             <Table.HeaderCell>Creator</Table.HeaderCell>
                             <Table.HeaderCell>Created_at</Table.HeaderCell>
-
                         </Table.Row>
                     </Table.Header>
 
