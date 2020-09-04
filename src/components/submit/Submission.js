@@ -24,7 +24,7 @@ class Submission extends Component {
             <th>Upload</th>
             <th>Submitted at</th>
             <th>Assignment </th>
-            <th>User</th>
+            <th>Student</th>
           </thead>
           <tbody>
             {this.props.submissions.map((submission) => (
