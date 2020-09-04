@@ -1,16 +1,15 @@
 import axios from "axios";
 
-import { GET_ATTENDANCE, } from './types';
+import { ADD_ATTENDANCE_SUCCESS, } from './types';
 
-export const getAttendance = () => dispatch => {
+export const addAttendance = (flag) => (dispatch) => {
     axios
-    .get(`http://127.0.0.1:8000/api/Club/Club/`)
+    .post("http://127.0.0.1:8000/api/attend/attendancesheet/",flag)
     .then((res) => {
         dispatch({
-            type: GET_ATTENDANCE,
+            type: ADD_ATTENDANCE_SUCCESS,
             payload: res.data,
         });
     })
     .catch((err) => console.log(err));
-};
-
+}

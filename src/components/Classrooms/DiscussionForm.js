@@ -1,6 +1,6 @@
 
 import React, { Fragment, Component } from "react";
-import { Button, Form, Dropdown, Checkbox  } from "semantic-ui-react";
+import { Button, Form, Dropdown, } from "semantic-ui-react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { getClassrooms,  } from "../../actions/Classroom";

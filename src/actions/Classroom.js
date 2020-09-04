@@ -1,6 +1,14 @@
 import axios from "axios";
 
-import { GET_CLASSROOMS, DELETE_CLASSROOMS, GET_FACULTY, GET_SECTIONS, GET_SUBJECTS, ADD_CLASSROOM_SUCCESS, ADD_MEMBER_SUCCESS, } from './types';
+import { GET_CLASSROOMS,
+        DELETE_CLASSROOMS,
+        GET_FACULTY,
+        GET_SECTIONS, 
+        GET_SUBJECTS, 
+        ADD_CLASSROOM_SUCCESS, 
+        ADD_MEMBER_SUCCESS,
+        GET_CLASSMEMBERS,
+       } from './types';
 
 //GET CLASSROOMS
 
@@ -120,4 +128,19 @@ export const addClassMember = (member) => (dispatch) => {
     })
     .catch((err) => console.log(err));
 }
+
+
+export const getClassMembers = (id) => dispatch => {
+    axios
+    .get(`http://127.0.0.1:8000/api/class/${id}/member`)
+    .then((res) => {
+        // console.log('faculty',res.data)
+        dispatch({
+            type: GET_CLASSMEMBERS,
+            payload: res.data,
+
+        });
+    })
+    .catch((err) => console.log(err));
+};
 

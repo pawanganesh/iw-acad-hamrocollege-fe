@@ -5,6 +5,7 @@ import facultyReducer  from "./faculty";
 import subjectReducer from './subject';
 import sectionReducer from './section'
 import clubReducer from "./Club";
+import attendanceReducer from "./Attendance";
 
 const allReducers = combineReducers({
     classrooms: classroomReducer,
@@ -12,7 +13,8 @@ const allReducers = combineReducers({
     faculty: facultyReducer,
     section: sectionReducer,
     subject: subjectReducer,
-    clubs: clubReducer
+    clubs: clubReducer,
+    attendance: attendanceReducer
 });
 
 export default allReducers;
