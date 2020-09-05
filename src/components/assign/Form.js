@@ -2,53 +2,53 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { addAssigns } from "../../actions/assigns";
-import { getSubjects, addSubjects} from '../../actions/subjects'
-// yah ni import garnu parne hunxa parne xa 
+import { getSubjects, addSubjects } from "../../actions/subjects";
 
 class Form extends Component {
   state = {
-    Title: "",
-    Upload: "",
-    Sdate: "",
-    Ddate: "",
-    Subject: "",
-    User: "",  
-    // yah mathi ni add garnu parne huna sakxa (User:"") kei details haru 
-
+    title: "",
+    upload: "",
+    due_date: "",
+    created_at: "",
+    subject: "",
+    user: this.props.auth.user.id,
   };
 
   static propTypes = {
-    addAssign: PropTypes.func.isRequired,
+    addAssigns: PropTypes.func.isRequired,
     subjects: PropTypes.array.isRequired,
-    // user ko section rakhna parne xa hai  yo case ma teacher haru hun user 
+    auth: PropTypes.object.isRequired,
+    // user ko section rakhna parne xa hai  yo case ma teacher haru hun user
   };
+  componentDidMount() {
+    this.props.getSubjects();
+  }
 
   onChange = (e) => this.setState({ [e.target.name]: e.target.value });
 
   handleFileChange = (e) =>
     this.setState({
-      upload: e.target.files[0]
+      upload: e.target.files[0],
     });
 
   onSubmit = (e) => {
     e.preventDefault();
-    const { title, upload, due_date, created_at, subject, user} = this.state;
-    const assign = { title, upload, due_date, created_at, subject, user };
-    this.props.addAssigns(assign);
-    // var form_data = new FormData();
-    // form_data.append("title", title);
-    // form_data.append("upload", upload);
-    // form_data.append("due_date", due_date);
-    // form_data.append("created_at", created_at);
-    // form_data.append("subject", subject);
-    // form_data.append("user", user);
-    
+    const { title, upload, due_date, subject, user } = this.state;
+    // const assign = { title, upload, due_date, subject, user };
+    // this.props.addAssigns(assign);
 
-    // this.props.addAssigns(form_data);
+    var form_data = new FormData();
+    form_data.append("title", title);
+    form_data.append("upload", upload);
+    form_data.append("due_date", due_date);
+    form_data.append("subject", subject);
+    form_data.append("user", user);
+
+    this.props.addAssigns(form_data);
   };
 
   render() {
-    const { title, due_date, created_at, subject, user} = this.state;
+    const { title, due_date, subject } = this.state;
     return (
       <div className="card card-body mt-4 mb-4">
         <h2>Add Assignment</h2>
@@ -73,7 +73,7 @@ class Form extends Component {
               // value={file}
             />
           </div>
-          <div className="form-group">
+          {/* <div className="form-group">
             <label>Created Date</label>
             <input
               className="form-control"
@@ -82,7 +82,7 @@ class Form extends Component {
               onChange={this.onChange}
               value={created_at}
             />
-          </div>
+          </div> */}
           <div className="form-group">
             <label>Due Date</label>
             <input
@@ -94,22 +94,16 @@ class Form extends Component {
             />
           </div>
           <div>
-            <label for="subjects">Subject:</label>                           
-              <select  name="subject" value={subject} onChange={this.onChange} >
-                {this.props.subjects.map((subject) =>(
-                  <option>{subject.id}</option> 
-                    ))}                               
-              </select>                        
+            <label>Subject:</label>
+            <select name="subject" value={subject} onChange={this.onChange}>
+              {this.props.subjects.map((subject) => (
+                <option key={subject.id} value={subject.id}>
+                  {subject.name}
+                </option>
+              ))}
+            </select>
           </div>
-          {/* users haruko lai dropdown ho yeslai initiale garnu parne xa maile muni banaisake just uncomment gardinus */}
-          {/* <div>
-            <label for="users">Teacher:</label>                           
-              <select  name="user" value={user} onChange={this.onChange} >
-                {this.props.users.map((user) =>(
-                  <option >{user.id}</option> 
-                    ))}                               
-              </select>                        
-          </div>           */}          
+
           <div className="form-group">
             <button type="submit" className="btn btn-primary">
               Submit
@@ -122,9 +116,12 @@ class Form extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    
   subjects: state.subjects.subjects,
-  // yah ni users harulai initialize garna parne xa 
+  auth: state.auth,
 });
 
-export default connect(mapStateToProps, { addAssigns, getSubjects, addSubjects })(Form);
+export default connect(mapStateToProps, {
+  addAssigns,
+  getSubjects,
+  addSubjects,
+})(Form);

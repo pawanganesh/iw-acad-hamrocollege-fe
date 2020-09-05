@@ -20,11 +20,13 @@ class Submission extends Component {
         <h1>Submissions List</h1>
         <table className="table">
           <thead>
-            <th>ID</th>
-            <th>Upload</th>
-            <th>Submitted at</th>
-            <th>Assignment </th>
-            <th>Student</th>
+            <tr>
+              <th>ID</th>
+              <th>Upload</th>
+              <th>Submitted at</th>
+              <th>Assignment </th>
+              <th>Student</th>
+            </tr>
           </thead>
           <tbody>
             {this.props.submissions.map((submission) => (
