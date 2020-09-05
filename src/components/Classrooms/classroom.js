@@ -1,8 +1,17 @@
 import React from "react";
 import { Tab } from "semantic-ui-react";
 import ClassroomDiscussion from "./classroomDiscussion";
-
+import ClassroomList from "./classroomList";
 const panes = [
+  {
+    menuItem: "Classroom",
+    render: () => (
+      <Tab.Pane>
+        <ClassroomList />
+      </Tab.Pane>
+    ),
+  },
+
   {
     menuItem: "Classroom Discussion",
     render: () => (

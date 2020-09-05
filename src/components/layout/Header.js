@@ -37,7 +37,13 @@ class Header extends Component {
               as={Link}
               to="/classroom"
             />
-
+            <Menu.Item
+              name="admin"
+              active={activeItem === "admin"}
+              onClick={this.handleItemClick}
+              as={Link}
+              to="/admin"
+            />
             <Dropdown
               trigger={
                 <span>

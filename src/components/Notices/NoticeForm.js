@@ -25,6 +25,7 @@ class NoticeForm extends Component {
   }
 
   onChange = (e) => this.setState({ [e.target.name]: e.target.value });
+
   handleDropdownChange = (e, data) =>
     this.setState({
       [data.name]: data.value,
@@ -71,7 +72,6 @@ class NoticeForm extends Component {
           <Modal.Content>
             <Form onSubmit={this.onFormSubmit}>
               {/* <Form.Input type="text" name="author" value={author}></Form.Input> */}
-
               <Dropdown
                 placeholder="Select Category"
                 fluid
@@ -79,11 +79,8 @@ class NoticeForm extends Component {
                 options={optionCategories}
                 onChange={this.handleDropdownChange}
                 name="category"
-                // value={}
               />
-
               <br />
-
               <Form.TextArea
                 label="Notice "
                 placeholder="Write notice here"
@@ -91,23 +88,14 @@ class NoticeForm extends Component {
                 value={text}
                 onChange={this.onChange}
               />
-
               <Form.Input
                 type="file"
                 label="Upload File"
                 placeholder="File"
                 name="file"
-                // value={file || ""}
                 onChange={this.handleFileChange}
               ></Form.Input>
-
-              {/* <Form.Input
-                type="text"
-                name="likes"
-                value={likes}
-                onChange={this.onChange}
-              ></Form.Input> */}
-
+              }
               <Modal.Actions>
                 <Button content="Submit" type="submit" />
               </Modal.Actions>

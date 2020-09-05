@@ -1,12 +1,12 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { getNotices, deleteNotice } from "../../actions/notices";
+// import { getNotices, deleteNotice } from "../../actions/notices";
 import { getUserProfile } from "../../actions/auth";
 
 import { getClassroomDiscussion } from "../../actions/classroom";
 
-import { Feed, Icon, Header, Button, Segment } from "semantic-ui-react";
+import { Feed, Icon, Header, Segment } from "semantic-ui-react";
 // import NoticeForm from "./NoticeForm";
 import ClassroomDiscussionForm from "../Classrooms/classroomDiscussionForm";
 
@@ -95,11 +95,11 @@ class ClassroomDiscussion extends Component {
 const mapStateToProps = (state) => ({
   // console.log(state)
   auth: state.auth,
-  classroomDiscussions: state.classroomDiscussions.classroomDiscussions,
+  classroomDiscussions: state.classrooms.classroomDiscussions,
 });
 
 export default connect(mapStateToProps, {
   getClassroomDiscussion,
-  deleteNotice,
+  // deleteNotice,
   getUserProfile,
 })(ClassroomDiscussion);
