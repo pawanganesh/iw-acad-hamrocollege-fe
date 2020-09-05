@@ -36,8 +36,9 @@ class Notices extends Component {
     return (
       <Fragment>
         <Container text>
-          {user.is_admin ? <NoticeForm /> : null}
-
+          {/* {user.is_admin ? <NoticeForm /> : null} */}
+          {/* Notice: ROLE */}
+          <NoticeForm />
           {/* style={{ marginTop: "7em" }} */}
           <Header>College Notice Board</Header>
           {this.props.notices.map((notice) => (

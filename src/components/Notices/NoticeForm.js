@@ -95,7 +95,7 @@ class NoticeForm extends Component {
                 name="file"
                 onChange={this.handleFileChange}
               ></Form.Input>
-              }
+
               <Modal.Actions>
                 <Button content="Submit" type="submit" />
               </Modal.Actions>

@@ -44,13 +44,6 @@ class AddNewClassroomForm extends Component {
     e.preventDefault();
     console.log(this.state);
     const { title, creator_id, faculty, section, subject } = this.state;
-    // const newClassroom = {
-    //   title,
-    //   creator,
-    //   faculty,
-    //   section,
-    //   subject,
-    // };
     var form_data = new FormData();
     form_data.append("title", title);
     form_data.append("subject", subject);

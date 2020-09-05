@@ -16,6 +16,8 @@ class Submission extends Component {
   render() {
     return (
       <Fragment>
+        {/* {this.props.auth.user.is_student ? <Submitform /> : ""} */}
+        {/* NOTICE: ROLE */}
         <Submitform />
         <h1>Submissions List</h1>
         <table className="table">
@@ -58,6 +60,7 @@ class Submission extends Component {
 
 const mapStateToProps = (state) => ({
   submissions: state.submissions.submissions,
+  auth: state.auth,
 });
 
 export default connect(mapStateToProps, { getSubmissions, deleteSubmissions })(
