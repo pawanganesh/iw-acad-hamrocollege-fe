@@ -22,9 +22,11 @@ class Author extends Component {
                 <h1>Author List</h1>    
                 <table className='table'>
                     <thead>
-                        <th>ID</th>
-                        <th>Firstname</th> 
-                        <th>Lastname</th>                                                            
+                        <tr>
+                            <th>ID</th>
+                            <th>Firstname</th> 
+                            <th>Lastname</th>  
+                        </tr>                                                          
                     </thead>
                     <tbody>
                         {this.props.authors.map((author) => (

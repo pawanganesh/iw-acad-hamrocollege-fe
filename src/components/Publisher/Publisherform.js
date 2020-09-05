@@ -7,14 +7,14 @@ import {addPublishers} from '../../actions/publishers'
 
 
  class Publisherform extends Component {
-     state = {
-         Name: '',
-         Country: '',
-         City: '', 
+     state = {         
+         name: '',
+         country: '', 
+         city: ''
      }
 
      static propTypes = {
-         addPublisher: PropTypes.func.isRequired
+         addPublishers: PropTypes.func.isRequired
      }
 
      onChange=e=> this.setState({ [e.target.name]: e.target.value })

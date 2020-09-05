@@ -4,6 +4,7 @@ import publishers from './publishers'
 import books from './books' 
 import requests from './requests' 
 import issues from './issues' 
+import authReducer from "./auth";
 
 
 export default combineReducers({
@@ -11,7 +12,8 @@ export default combineReducers({
     publishers,
     books,
     requests,
-    issues
+    issues,
+    auth: authReducer,
     // subjects  
 
 });

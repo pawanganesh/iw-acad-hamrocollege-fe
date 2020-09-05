@@ -22,10 +22,12 @@ class Publisher extends Component {
                 <h1>Publisher List</h1>    
                 <table className='table'>
                     <thead>
-                        <th>ID</th>
-                        <th>Name</th> 
-                        <th>Country</th>  
-                        <th>City</th>                                                          
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th> 
+                            <th>Country</th>  
+                            <th>City</th>  
+                        </tr>                                                        
                     </thead>
                     <tbody>
                         {this.props.publishers.map((publisher) => (

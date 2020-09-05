@@ -2,24 +2,23 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import {addRequests} from '../../actions/requests'
-
-
-
+import {addBooks, getBooks} from '../../actions/books'
 
  class Requestform extends Component {
      state = {
-         User: '',
-         Book: '',
-         Status: '',
-         Requestdate: '',
-         
-         
-         
-         
+         user: this.props.auth.user.id, 
+         book: '', 
+         status: '', 
+         request_date: ''     
      }
+     componentDidMount() {
+        this.props.getBooks();             
+      }
 
      static propTypes = {
-         addRequest: PropTypes.func.isRequired
+         addRequests: PropTypes.func.isRequired,
+         books: PropTypes.array.isRequired,
+         auth: PropTypes.object.isRequired,
      }
 
      onChange=e=> this.setState({ [e.target.name]: e.target.value })
@@ -28,17 +27,25 @@ import {addRequests} from '../../actions/requests'
          const{user, book, status, request_date} = this.state
          const requests= {user, book, status, request_date}
          this.props.addRequests(requests)
+
+        //  var form_data = new FormData();
+        //  form_data.append("user", user);
+        //  form_data.append("book", book);
+        //  form_data.append("status", status);
+        //  form_data.append("request_date", request_date);        
+
+        //  this.props.addRequests(form_data);
          
      }
 
 
     render() {
-        const {user, book, status, request_date} = this.state
+        const {book, status, request_date} = this.state
         return (
             <div className="card card-body mt-4 mb-4">
                 <h2>Requests</h2>
                 <form onSubmit={this.onSubmit}>                    
-                    <div className='form-group'>
+                    {/* <div className='form-group'>
                         <label>User</label>
                         <input 
                         className="form-control"
@@ -47,8 +54,16 @@ import {addRequests} from '../../actions/requests'
                         onChange={this.onChange}
                         value={user}
                         />    
-                    </div>
+                    </div> */}
                     <div className='form-group'>
+                        <label >Book:</label>     
+                        <select  name="book" value={book} onChange={this.onChange} >
+                                {this.props.books.map((book) =>(
+                                    <option key={book.id} value={book.id} >{book.title}</option> 
+                                ))}                               
+                        </select>    
+                    </div>
+                    {/* <div className='form-group'>
                         <label>Book </label>
                         <input 
                         className="form-control"
@@ -57,7 +72,7 @@ import {addRequests} from '../../actions/requests'
                         onChange={this.onChange}
                         value={book}
                         />    
-                    </div>  
+                    </div>   */}
                     <div className='form-group'>
                         <label>Status</label>
                         <input 
@@ -89,4 +104,9 @@ import {addRequests} from '../../actions/requests'
     }
 }
 
-export default connect(null, {addRequests}) (Requestform)
+const mapStateToProps = (state) => ({
+    books: state.books.books,
+    auth: state.auth,
+  });
+
+export default connect(mapStateToProps, {addRequests,getBooks, addBooks}) (Requestform)

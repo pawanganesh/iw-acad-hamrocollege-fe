@@ -15,6 +15,7 @@ import Issue from './components/Issue/Issue'
 
 
 
+
 function App() {
   return (
     <Provider store={store}>
@@ -37,3 +38,70 @@ function App() {
 }
 
 export default App;
+
+// import React, { Component, Fragment } from "react";
+
+// import Header from "./layout/Header";
+// import Footer from "./layout/Footer";
+// import Home from "../components/Home";
+// import { Container } from "semantic-ui-react";
+// import { HashRouter as Router, Route, Switch } from "react-router-dom";
+// import Register from "./accounts/Register";
+// import Login from "./accounts/Login";
+// import UserProfile from "./accounts/UserProfile";
+// import ClassRoom from "../components/Classrooms/classroom";
+// import PrivateRoute from "./common/PrivateRoute";
+// import { loadUser } from "../actions/auth";
+// import store from "../store";
+
+
+// import Author from '../components/Author/Author'
+// import Publisher from '../components/Publisher/Publisher'
+// import Book from '../components/Book/Book'
+// import Request from '../components/Request/Request'
+// import Issue from '../components/Issue/Issue'
+// import Admin from "../components/Admin";
+
+// import Alerts from "./layout/Alerts";
+
+// class App extends Component {
+//   componentDidMount() {
+//     store.dispatch(loadUser());
+//   }
+//   render() {
+//     return (
+//       <Router>
+//         <Fragment>
+//           <Header />
+//           <Alerts />
+//           <Container>
+//             <Switch>
+//               <PrivateRoute exact path="/" component={Home} />
+//               <Route exact path="/register" component={Register} />
+//               <Route exact path="/login" component={Login} />
+//               <PrivateRoute exact path="/classroom" component={ClassRoom} />
+//               <PrivateRoute exact path="/admin" component={Admin} />
+//               <PrivateRoute
+//                 // exact
+//                 path="/userprofile/:username"
+//                 component={UserProfile}
+//               />
+//               {/* Added start */}
+//                  <Route exact path="/author" component={Author} />
+                //  <Route exact path="/publisher" component={Publisher} />  
+                //  <Route exact path="/book" component={Book} />  
+                //  <Route exact path="/request" component={Request} />
+                //  <Route exact path="/issue" component={Issue} />  
+
+//               {/* Added End */}
+//             </Switch>
+//           </Container>
+//           <Footer />
+//         </Fragment>
+//       </Router>
+//     );
+//   }
+// }
+
+// export default App;
+

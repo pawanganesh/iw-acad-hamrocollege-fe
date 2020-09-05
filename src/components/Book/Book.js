@@ -22,13 +22,15 @@ class Book extends Component {
                 <h1>Book List</h1>    
                 <table className='table'>
                     <thead>
-                        <th>ID</th>
-                        <th>Book ID</th> 
-                        <th>Title</th>    
-                        <th>Author</th> 
-                        <th>ISBN</th>  
-                        <th>Publisher</th>  
-                        <th>Edition</th>                                                           
+                        <tr>
+                            <th>ID</th>
+                            <th>Book ID</th> 
+                            <th>Title</th>    
+                            <th>Author</th> 
+                            <th>ISBN</th>  
+                            <th>Publisher</th>  
+                            <th>Edition</th> 
+                        </tr>                                                          
                     </thead>
                     <tbody>
                         {this.props.books.map((book) => (

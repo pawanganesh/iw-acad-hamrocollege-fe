@@ -22,11 +22,13 @@ class Issue extends Component {
                 <h1>Book Issued</h1>    
                 <table className='table'>
                     <thead>
-                        <th>ID</th>
-                        <th>User</th> 
-                        <th>Book</th>    
-                        <th>Issue Date</th> 
-                        <th>Return Date</th>                                                                                    
+                        <tr>
+                            <th>ID</th>
+                            <th>User</th> 
+                            <th>Book</th>    
+                            <th>Issue Date</th> 
+                            <th>Return Date</th>
+                        </tr>                                                                                    
                     </thead>
                     <tbody>
                         {this.props.issues.map((issue) => (

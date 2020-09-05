@@ -2,51 +2,58 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import {addBooks} from '../../actions/books'
+import { getAuthors, addAuthors} from '../../actions/authors'
+import { getPublishers, addPublishers} from '../../actions/publishers'
 
 
 
 
  class Bookform extends Component {
-     state = {
-         Bookid: '',
-         Title: '',
-         Author: '',
-         ISBN: '',
-         Publisher: '',
-         Edition: '',
-         
-         
-         
+     state = {         
+         book_id: '', 
+         title: '', 
+         isbn: '', 
+         edition: '', 
+         author: '', 
+         publisher: ''     
+ 
      }
 
      static propTypes = {
-         addAuthor: PropTypes.func.isRequired
+         addBooks: PropTypes.func.isRequired,
+         authors: PropTypes.array.isRequired,
+         publishers: PropTypes.array.isRequired,         
      }
+
+     componentDidMount() {
+        this.props.getPublishers();
+        this.props.getAuthors();     
+      }
+      
 
      onChange=e=> this.setState({ [e.target.name]: e.target.value })
      onSubmit = e => {
          e.preventDefault()
-         const{bookid, title, author, isbn, publisher, edition } = this.state
-         const books= {bookid, title, author, isbn, publisher, edition}
-         this.props.addAuthors(books)
+         const{book_id, title, isbn, edition, author, publisher } = this.state
+         const books= {book_id, title, isbn, edition, author, publisher }
+         this.props.addBooks(books)
+         
          
      }
-
-
     render() {
-        const { bookid, title, author, isbn, publisher, edition} = this.state
+        const { book_id, title, isbn, edition, author, publisher} = this.state
         return (
             <div className="card card-body mt-4 mb-4">
-                <h2>Add Author</h2>
+                <h2>Add Book</h2>
                 <form onSubmit={this.onSubmit}>                    
                     <div className='form-group'>
                         <label>Book ID </label>
                         <input 
                         className="form-control"
-                        type="text"
-                        name="bookid"
+                        type="number"
+                        name="book_id"
                         onChange={this.onChange}
-                        value={bookid}
+                        value={book_id}
                         />    
                     </div>
                     <div className='form-group'>
@@ -58,16 +65,14 @@ import {addBooks} from '../../actions/books'
                         onChange={this.onChange}
                         value={title}
                         />    
-                    </div>  
+                    </div>                     
                     <div className='form-group'>
-                        <label>Author </label>
-                        <input 
-                        className="form-control"
-                        type="text"
-                        name="author"
-                        onChange={this.onChange}
-                        value={author}
-                        />    
+                    <label >Author:</label>     
+                        <select  name="author" value={author} onChange={this.onChange} >
+                                {this.props.authors.map((author) =>(
+                                    <option key={author.id} value={author.id} >{author.firstname}</option> 
+                                ))}                               
+                        </select>    
                     </div>
                     <div className='form-group'>
                         <label>ISBN </label>
@@ -80,16 +85,6 @@ import {addBooks} from '../../actions/books'
                         />    
                     </div>
                     <div className='form-group'>
-                        <label>Publisher </label>
-                        <input 
-                        className="form-control"
-                        type="text"
-                        name="publisher"
-                        onChange={this.onChange}
-                        value={publisher}
-                        />    
-                    </div>
-                    <div className='form-group'>
                         <label>Edition </label>
                         <input 
                         className="form-control"
@@ -98,17 +93,36 @@ import {addBooks} from '../../actions/books'
                         onChange={this.onChange}
                         value={edition}
                         />    
-                    </div>                      
+                    </div>                    
+                    <div>
+                        <label >Publisher:</label>                           
+                        {/* <input type= 'select' name="publisher" value={publisher}>
+                            {this.props.publishers.map((publisher) =>(
+                                        <option onChange={this.onChange} >{publisher.id}</option> 
+                                    ))}
+                        </input> */}
+                        <select  name="publisher" value= {publisher} onChange={this.onChange} >
+                                {this.props.publishers.map((publisher) =>(
+                                    <option key={publisher.id} value={publisher.id} >{publisher.name}</option> 
+                                ))}                               
+                        </select>                        
+                    </div>                                                            
                                        
                     <div className="form-group">
                         <button type="submit" className="btn btn-primary">
                             Submit
                         </button>
-                    </div>
+                    </div>                    
                 </form>                                
             </div>
         )
     }
 }
 
-export default connect(null, {addBooks}) (Bookform)
+const mapStateToProps = (state) => ({
+    books: state.books.books,
+    authors: state.authors.authors,
+    publishers: state.publishers.publishers,    
+  });
+
+export default connect(mapStateToProps, {addBooks, getAuthors, addAuthors, getPublishers, addPublishers}) (Bookform)

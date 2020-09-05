@@ -8,15 +8,15 @@ import {addAuthors} from '../../actions/authors'
 
  class Authorform extends Component {
      state = {
-         Firstname: '',
-         Lastname: '',
+         firstname: '',
+         lastname: '',
          
          
          
      }
 
      static propTypes = {
-         addAuthor: PropTypes.func.isRequired
+         addAuthors: PropTypes.func.isRequired
      }
 
      onChange=e=> this.setState({ [e.target.name]: e.target.value })
@@ -24,8 +24,7 @@ import {addAuthors} from '../../actions/authors'
          e.preventDefault()
          const{firstname, lastname} = this.state
          const authors= {firstname, lastname}
-         this.props.addAuthors(authors)
-         
+         this.props.addAuthors(authors)         
      }
 
 

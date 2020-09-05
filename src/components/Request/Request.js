@@ -22,18 +22,21 @@ class Request extends Component {
                 <h1>Request List</h1>    
                 <table className='table'>
                     <thead>
-                        <th>ID</th>
-                        <th>User</th> 
-                        <th>Book</th>  
-                        <th>Status</th>  
-                        <th>Request Date</th>                                                        
+                        <tr>
+                            <th>ID</th>
+                            <th>User</th> 
+                            <th>Book</th>  
+                            <th>Status</th>  
+                            <th>Request Date</th> 
+                        </tr>                                                 
+                    
                     </thead>
                     <tbody>
                         {this.props.requests.map((request) => (
                             <tr key={request.id}>
                                 <td>{request.id}</td>
                                 <td>{request.user}</td>
-                                {console.log(request.user)} 
+                                {/* {console.log(request.user)}  */}
                                 <td>{request.book}</td> 
                                 <td>{request.status}</td>                                                            
                                 <td>{request.request_date}</td>                                 
