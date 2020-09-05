@@ -18,7 +18,6 @@ class Form extends Component {
     addAssigns: PropTypes.func.isRequired,
     subjects: PropTypes.array.isRequired,
     auth: PropTypes.object.isRequired,
-    // user ko section rakhna parne xa hai  yo case ma teacher haru hun user
   };
   componentDidMount() {
     this.props.getSubjects();
@@ -34,8 +33,6 @@ class Form extends Component {
   onSubmit = (e) => {
     e.preventDefault();
     const { title, upload, due_date, subject, user } = this.state;
-    // const assign = { title, upload, due_date, subject, user };
-    // this.props.addAssigns(assign);
 
     var form_data = new FormData();
     form_data.append("title", title);
@@ -70,19 +67,9 @@ class Form extends Component {
               type="file"
               name="upload"
               onChange={this.handleFileChange}
-              // value={file}
             />
           </div>
-          {/* <div className="form-group">
-            <label>Created Date</label>
-            <input
-              className="form-control"
-              type="date"
-              name="created_at"
-              onChange={this.onChange}
-              value={created_at}
-            />
-          </div> */}
+
           <div className="form-group">
             <label>Due Date</label>
             <input
@@ -95,9 +82,14 @@ class Form extends Component {
           </div>
           <div>
             <label>Subject:</label>
-            <select name="subject" value={subject} onChange={this.onChange}>
+            <select
+              name="subject"
+              value={subject}
+              onChange={this.onChange}
+              placeholder="asdasd"
+            >
               {this.props.subjects.map((subject) => (
-                <option key={subject.id} value={subject.id}>
+                <option selected key={subject.id} value={subject.id}>
                   {subject.name}
                 </option>
               ))}

@@ -64,9 +64,9 @@ class Submitform extends Component {
               value={assignment}
               onChange={this.onChange}
             >
-              {this.props.assigns.map((assignment) => (
-                <option key={assignment.id} value={assignment.id}>
-                  {assignment.title}
+              {this.props.assigns.map((assign) => (
+                <option key={assign.id} value={assign.id}>
+                  {assign.title}
                 </option>
               ))}
             </select>

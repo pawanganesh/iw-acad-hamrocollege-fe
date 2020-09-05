@@ -36,7 +36,7 @@ class Assign extends Component {
                 <td>{assign.upload}</td>
                 <td>{assign.due_date}</td>
                 <td>{assign.created_at}</td>
-                <td>{assign.subject}</td>
+                <td>{assign.subject_name}</td>
                 <td>{assign.user}</td>
                 <td>
                   <button

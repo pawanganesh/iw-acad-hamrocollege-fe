@@ -6,61 +6,6 @@ import PropTypes from "prop-types";
 import { logout } from "../../actions/auth";
 import { getUserProfile } from "../../actions/auth";
 
-// class Header extends Component {
-//   render() {
-//     return (
-// <nav className="navbar navbar-expand-lg navbar-light bg-light">
-//   <button
-//     className="navbar-toggler"
-//     type="button"
-//     data-toggle="collapse"
-//     data-target="#navbarTogglerDemo01"
-//     aria-controls="navbarTogglerDemo01"
-//     aria-expanded="false"
-//     aria-label="Toggle navigation"
-//   >
-//     <span className="navbar-toggler-icon"></span>
-//   </button>
-//   <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-//     <Link to="/semester">
-//       <a  className="navbar-brand">
-//         College Section
-//       </a>
-//     </Link>
-//     <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
-//       <li className="nav-item active">
-//           <Link to="/semester">
-//             <a className="nav-link" >Semester  <span className="sr-only">(current)</span></a>
-//           </Link>
-//       </li>
-//       <li className="nav-item active">
-//           <Link to="/faculty">
-//             <a className="nav-link" >Faculty  <span className="sr-only">(current)</span></a>
-//           </Link>
-//       </li>
-//       <li className="nav-item active">
-//           <Link to="/subject">
-//             <a className="nav-link" >Subject  <span className="sr-only">(current)</span></a>
-//           </Link>
-//       </li>
-//       <li className="nav-item active">
-//         <Link to="/home">
-//           <a href="/" className="nav-link">
-//             Assignment <span className="sr-only">(current)</span>
-//           </a>
-//         </Link>
-//       </li>
-//       <li className="nav-item active">
-//         <Link to="/submission">
-//           <a href="/" className="nav-link">
-//             Submission <span className="sr-only">(current)</span>
-//           </a>
-//         </Link>
-//       </li>
-//     </ul>
-//   </div>
-// </nav>
-
 class Header extends Component {
   state = {
     activeItem: "hamroCollege",
@@ -92,13 +37,18 @@ class Header extends Component {
               as={Link}
               to="/classroom"
             />
-            <Menu.Item
-              name="admin"
-              active={activeItem === "admin"}
-              onClick={this.handleItemClick}
-              as={Link}
-              to="/admin"
-            />
+            {user.is_admin ? (
+              <Menu.Item
+                name="admin"
+                active={activeItem === "admin"}
+                onClick={this.handleItemClick}
+                as={Link}
+                to="/admin"
+              />
+            ) : (
+              ""
+            )}
+
             <Dropdown
               trigger={
                 <span>

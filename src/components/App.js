@@ -45,11 +45,11 @@ class App extends Component {
                 component={UserProfile}
               />
               {/* Added start */}
-              <Route exact path="/submission" component={Submission} />
-              <Route exact path="/faculty" component={Faculty} />
-              <Route exact path="/semester" component={Semester} />
-              <Route exact path="/subject" component={Subject} />
-              <Route exact path="/assignment" component={Assignment} />
+              <PrivateRoute exact path="/submission" component={Submission} />
+              <PrivateRoute exact path="/faculty" component={Faculty} />
+              <PrivateRoute exact path="/semester" component={Semester} />
+              <PrivateRoute exact path="/subject" component={Subject} />
+              <PrivateRoute exact path="/assignment" component={Assignment} />
 
               {/* Added End */}
             </Switch>

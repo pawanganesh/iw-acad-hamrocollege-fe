@@ -9,9 +9,7 @@ class UserProfile extends Component {
   static propTypes = {
     auth: PropTypes.object.isRequired,
   };
-  //   componentDidMount() {
-  //     this.props.getUserProfile();
-  //   }
+
   render() {
     const { userprofile } = this.props;
     return (
@@ -58,6 +56,7 @@ class UserProfile extends Component {
 
 const mapStateToProps = (state) => ({
   userprofile: state.userprofile.userprofile,
+  auth: state.auth,
 });
 
 export default connect(mapStateToProps)(UserProfile);
