@@ -21,14 +21,13 @@ class Semester extends Component {
         <table className="table">
           <thead>
             <tr>
-              <th>ID</th>
               <th>Semester</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
             {this.props.semesters.map((semester) => (
               <tr key={semester.id}>
-                <td>{semester.id}</td>
                 <td>{semester.semester}</td>
                 <td>
                   <button

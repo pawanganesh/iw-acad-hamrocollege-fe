@@ -23,21 +23,21 @@ class Submission extends Component {
         <table className="table">
           <thead>
             <tr>
-              <th>ID</th>
               <th>Upload</th>
               <th>Submitted at</th>
               <th>Assignment </th>
               <th>Student</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
             {this.props.submissions.map((submission) => (
               <tr key={submission.id}>
-                <td>{submission.id}</td>
                 <td>{submission.upload}</td>
                 <td>{submission.submitted_at}</td>
-                <td>{submission.assignment}</td>
-                <td>{submission.user}</td>
+                <td>{submission.assignment_title}</td>
+                <td>{`${submission.user_fn} ${submission.user_ln}`}</td>
+
                 <td>
                   <button
                     onClick={this.props.deleteSubmissions.bind(

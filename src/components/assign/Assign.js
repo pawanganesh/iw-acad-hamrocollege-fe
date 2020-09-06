@@ -19,25 +19,25 @@ class Assign extends Component {
         <table className="table">
           <thead>
             <tr>
-              <th>ID</th>
               <th>title</th>
               <th>Upload</th>
               <th>Due date </th>
               <th>Created</th>
               <th>Subject</th>
               <th>Teacher</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
             {this.props.assigns.map((assign) => (
               <tr key={assign.id}>
-                <td>{assign.id}</td>
                 <td>{assign.title}</td>
                 <td>{assign.upload}</td>
                 <td>{assign.due_date}</td>
                 <td>{assign.created_at}</td>
                 <td>{assign.subject_name}</td>
-                <td>{assign.user}</td>
+                <td>{`${assign.teacher_fn} ${assign.teacher_ln}`}</td>
+
                 <td>
                   <button
                     onClick={this.props.deleteAssigns.bind(this, assign.id)}

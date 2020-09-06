@@ -54,3 +54,6 @@ export const ADD_CLASSROOM = "ADD_CLASSROOM";
 export const GET_FACULTY = "GET_FACULTY";
 export const GET_SECTION = "GET_SECTION";
 export const GET_SUBJECT = "GET_SUBJECT";
+export const GET_USERLIST = "GET_USERLIST";
+export const DELETE_USER = "DELETE_USER";
+export const GET_USERDETAIL = "GET_USERDETAIL";

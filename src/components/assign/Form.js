@@ -89,7 +89,7 @@ class Form extends Component {
               placeholder="asdasd"
             >
               {this.props.subjects.map((subject) => (
-                <option selected key={subject.id} value={subject.id}>
+                <option key={subject.id} value={subject.id}>
                   {subject.name}
                 </option>
               ))}

@@ -24,6 +24,7 @@ export class Alerts extends Component {
       if (message.deleteNotice) alert.success(message.deleteNotice);
       if (message.addNotice) alert.success(message.addNotice);
       if (message.addClassroom) alert.success(message.addClassroom);
+      if (message.deleteUser) alert.success(message.deleteUser);
     }
   }
   render() {

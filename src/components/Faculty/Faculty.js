@@ -23,14 +23,13 @@ class Faculty extends Component {
         <table className="table">
           <thead>
             <tr>
-              <th>ID</th>
               <th>Name</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
             {this.props.facultys.map((faculty) => (
               <tr key={faculty.id}>
-                <td>{faculty.id}</td>
                 <td>{faculty.name}</td>
                 <td>
                   <button

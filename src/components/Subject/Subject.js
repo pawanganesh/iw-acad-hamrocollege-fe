@@ -21,7 +21,6 @@ class Subject extends Component {
         <table className="table">
           <thead>
             <tr>
-              <th>ID</th>
               <th>Code</th>
               <th>Name</th>
               <th>Faculty</th>
@@ -31,11 +30,10 @@ class Subject extends Component {
           <tbody>
             {this.props.subjects.map((subject) => (
               <tr key={subject.id}>
-                <td>{subject.id}</td>
                 <td>{subject.subject_code}</td>
                 <td>{subject.name}</td>
-                <td>{subject.faculty}</td>
-                <td>{subject.semester}</td>
+                <td>{subject.faculty_name}</td>
+                <td>{subject.semester_name}</td>
                 <td>
                   <button
                     onClick={this.props.deleteSubjects.bind(this, subject.id)}

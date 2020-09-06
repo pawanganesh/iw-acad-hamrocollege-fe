@@ -17,8 +17,10 @@ import authors from "./authors";
 import issues from "./issues";
 import publishers from "./publishers";
 import requests from "./requests";
+import users from "./users";
 
 const allReducers = combineReducers({
+  users,
   requests,
   publishers,
   issues,

@@ -3,6 +3,7 @@ import { Tab } from "semantic-ui-react";
 import Subject from "../Subject/Subject";
 import Semester from "../Semester/Semester";
 import Faculty from "../Faculty/Faculty";
+import UserManagement from "./UserManagement";
 
 const panes = [
   {
@@ -33,8 +34,7 @@ const panes = [
     menuItem: "User Management",
     render: () => (
       <Tab.Pane>
-        {/* <Subject /> */}
-        <h1>Space for user Management</h1>
+        <UserManagement />
       </Tab.Pane>
     ),
   },

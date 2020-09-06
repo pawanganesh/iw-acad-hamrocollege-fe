@@ -13,6 +13,7 @@ class Semesterform extends Component {
   };
 
   onChange = (e) => this.setState({ [e.target.name]: e.target.value });
+
   onSubmit = (e) => {
     e.preventDefault();
     const { semester } = this.state;
@@ -33,7 +34,6 @@ class Semesterform extends Component {
               type="text"
               name="semester"
               onChange={this.onChange}
-              value={semester}
             />
           </div>
           <div className="form-group">
