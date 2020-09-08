@@ -16,7 +16,7 @@ class Issue extends Component {
   render() {
     return (
       <Fragment>
-        <Issueform />
+        {this.props.auth.user.is_librarian ? <Issueform /> : ""}
         <h1>Book Issued</h1>
         <table className="table">
           <thead>

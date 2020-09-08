@@ -16,7 +16,7 @@ class Book extends Component {
   render() {
     return (
       <Fragment>
-        <Bookform />
+        {this.props.auth.user.is_librarian ? <Bookform /> : ""}
         <h1>Book List</h1>
         <table className="table">
           <thead>

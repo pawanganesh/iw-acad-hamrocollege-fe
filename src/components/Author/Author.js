@@ -17,7 +17,7 @@ class Author extends Component {
     return (
       <Fragment>
         <Authorform />
-        <h1>Author List</h1>
+        {this.props.auth.user.is_librarian ? <Authorform /> : ""}
         <table className="table">
           <thead>
             <tr>

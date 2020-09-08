@@ -25,7 +25,7 @@ class Notices extends Component {
   }
 
   render() {
-    // const { user } = this.props.auth;
+    const { user } = this.props.auth;
     //  console.log("this.props.notices", this.props.notices);
     // console.log("this.props.notices.results", this.props.notices.results);
     // console.log(results);
@@ -36,10 +36,7 @@ class Notices extends Component {
     return (
       <Fragment>
         <Container text>
-          {/* {user.is_admin ? <NoticeForm /> : null} */}
-          {/* Notice: ROLE */}
-          <NoticeForm />
-          {/* style={{ marginTop: "7em" }} */}
+          {user.is_admin ? <NoticeForm /> : null}
           <Header>College Notice Board</Header>
           {this.props.notices.map((notice) => (
             <Segment key={notice.id}>

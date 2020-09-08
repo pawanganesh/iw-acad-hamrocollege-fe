@@ -16,7 +16,7 @@ class Publisher extends Component {
   render() {
     return (
       <Fragment>
-        <Publisherform />
+        {this.props.auth.user.is_librarian ? <Publisherform /> : ""}
         <h1>Publisher List</h1>
         <table className="table">
           <thead>

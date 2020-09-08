@@ -16,9 +16,7 @@ class Submission extends Component {
   render() {
     return (
       <Fragment>
-        {/* {this.props.auth.user.is_student ? <Submitform /> : ""} */}
-        {/* NOTICE: ROLE */}
-        <Submitform />
+        {this.props.auth.user.is_student ? <Submitform /> : ""}
         <h1>Submissions List</h1>
         <table className="table">
           <thead>
