@@ -1,4 +1,4 @@
-import { GET_REQUESTS, DELETE_REQUESTS, ADD_REQUESTS} from '../actions/types'
+import { GET_REQUESTS, DELETE_REQUESTS, ADD_REQUESTS, EDIT_REQUESTS, GET_REQUEST} from '../actions/types'
 
     const initialState= {
         requests:[]
@@ -12,6 +12,11 @@ import { GET_REQUESTS, DELETE_REQUESTS, ADD_REQUESTS} from '../actions/types'
                     ...state,
                     requests: action.payload
                 }
+            case GET_REQUEST:
+                return {
+                    ...state,
+                    [action.payload.id]: action.payload
+                }
             case DELETE_REQUESTS:
                 return {
                     ...state,
@@ -22,7 +27,13 @@ import { GET_REQUESTS, DELETE_REQUESTS, ADD_REQUESTS} from '../actions/types'
                 return {
                     ...state,
                     requests: [...state.requests, action.payload]
-                };                 
+                }; 
+                
+            case EDIT_REQUESTS:
+                return {
+                    ...state,
+                    [action.payload.id]: action.payload
+                }; 
 
             default:
                 return state            

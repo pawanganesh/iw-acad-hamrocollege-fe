@@ -7,6 +7,7 @@ import Authorform from "./Authorform";
 class Author extends Component {
   static propTypes = {
     authors: PropTypes.array.isRequired,
+    auth: PropTypes.object.isRequired,
   };
 
   componentDidMount() {
@@ -16,8 +17,7 @@ class Author extends Component {
   render() {
     return (
       <Fragment>
-        <Authorform />
-        <h1>Author List</h1>
+        {this.props.auth.user.is_librarian ? <Authorform /> : ""}
         <table className="table">
           <thead>
             <tr>
@@ -50,6 +50,7 @@ class Author extends Component {
 
 const mapStateToProps = (state) => ({
   authors: state.authors.authors,
+  auth: state.auth,
 });
 
 export default connect(mapStateToProps, { getAuthors, deleteAuthors })(Author);

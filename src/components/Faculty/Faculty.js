@@ -18,7 +18,6 @@ class Faculty extends Component {
     return (
       <Fragment>
         <Facultyform />
-        {/* <Semester/> */}
         <h1>Faculty List</h1>
         <table className="table">
           <thead>

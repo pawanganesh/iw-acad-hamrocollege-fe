@@ -7,6 +7,7 @@ import Publisherform from "./Publisherform";
 class Publisher extends Component {
   static propTypes = {
     publishers: PropTypes.array.isRequired,
+    auth: PropTypes.object.isRequired,
   };
 
   componentDidMount() {
@@ -16,7 +17,7 @@ class Publisher extends Component {
   render() {
     return (
       <Fragment>
-        <Publisherform />
+        {this.props.auth.user.is_librarian ? <Publisherform /> : ""}
         <h1>Publisher List</h1>
         <table className="table">
           <thead>
@@ -56,6 +57,7 @@ class Publisher extends Component {
 
 const mapStateToProps = (state) => ({
   publishers: state.publishers.publishers,
+  auth: state.auth,
 });
 
 export default connect(mapStateToProps, { getPublishers, deletePublishers })(

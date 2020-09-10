@@ -4,9 +4,11 @@ import PropTypes from "prop-types";
 import { getRequests, deleteRequests } from "../../actions/requests";
 import Requestform from "./Requestform";
 
+
 class Request extends Component {
   static propTypes = {
     requests: PropTypes.array.isRequired,
+    auth: PropTypes.object.isRequired,
   };
 
   componentDidMount() {
@@ -16,7 +18,8 @@ class Request extends Component {
   render() {
     return (
       <Fragment>
-        <Requestform />
+        {this.props.auth.user.is_student || this.props.auth.user.is_teacher  ? <Requestform /> : ""}
+        {/* <Requestform /> */}
         <h1>Request List</h1>
         <table className="table">
           <thead>
@@ -54,6 +57,7 @@ class Request extends Component {
 
 const mapStateToProps = (state) => ({
   requests: state.requests.requests,
+  auth: state.auth,
 });
 
 export default connect(mapStateToProps, { getRequests, deleteRequests })(

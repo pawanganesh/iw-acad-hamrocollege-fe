@@ -19,6 +19,7 @@ import Semester from "../components/Semester/Semester";
 import Subject from "../components/Subject/Subject";
 import Assignment from "../components/assign/Assignment";
 import Admin from "../components/Admin";
+import EditReq from "../components/Issue/EditReq"
 
 import Alerts from "./layout/Alerts";
 
@@ -59,6 +60,7 @@ class App extends Component {
               <PrivateRoute exact path="/semester" component={Semester} />
               <PrivateRoute exact path="/subject" component={Subject} />
               <PrivateRoute exact path="/assignment" component={Assignment} />
+              <PrivateRoute exact path="/edit/:id" component={EditReq} />
 
               {/* Added End */}
 

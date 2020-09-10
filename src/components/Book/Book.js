@@ -7,6 +7,7 @@ import Bookform from "./Bookform";
 class Book extends Component {
   static propTypes = {
     books: PropTypes.array.isRequired,
+    auth: PropTypes.object.isRequired,
   };
 
   componentDidMount() {
@@ -16,7 +17,7 @@ class Book extends Component {
   render() {
     return (
       <Fragment>
-        <Bookform />
+        {this.props.auth.user.is_librarian ? <Bookform /> : ""}
         <h1>Book List</h1>
         <table className="table">
           <thead>
@@ -57,6 +58,7 @@ class Book extends Component {
 
 const mapStateToProps = (state) => ({
   books: state.books.books,
+  auth: state.auth,
 });
 
 export default connect(mapStateToProps, { getBooks, deleteBooks })(Book);

@@ -1,7 +1,8 @@
 import axios from "axios";
 import { tokenConfig } from "../actions/auth";
+// import Home from "../components/Home"
 
-import { GET_REQUESTS, DELETE_REQUESTS, ADD_REQUESTS } from "./types";
+import { GET_REQUESTS, DELETE_REQUESTS, ADD_REQUESTS,EDIT_REQUESTS, GET_REQUEST } from "./types";
 
 export const getRequests = () => (dispatch, getState) => {
   axios
@@ -43,4 +44,25 @@ export const addRequests = (request) => (dispatch, getState) => {
       });
     })
     .catch((err) => console.log(err));
+};
+
+
+export const editRequests = (id, formValues) => async (dispatch, getState) => {
+  const res = await axios.patch(`http://127.0.0.1:8000/api/bookrequest/${id}/`,
+  formValues,  
+  tokenConfig(getState));
+  dispatch({
+    type: EDIT_REQUESTS,
+    payload: res.data
+  });
+  //  history.push({Home});
+};
+export const getRequest = (id) => async (dispatch, getState) => {
+  const res = await axios.get(`http://127.0.0.1:8000/api/bookrequest/${id}/`,  
+  tokenConfig(getState));  
+  dispatch({
+    type: GET_REQUEST,
+    payload: res.data
+  });
+  // history.push({Home});
 };
