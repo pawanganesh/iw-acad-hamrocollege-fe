@@ -7,6 +7,7 @@ import Authorform from "./Authorform";
 class Author extends Component {
   static propTypes = {
     authors: PropTypes.array.isRequired,
+    auth: PropTypes.object.isRequired,
   };
 
   componentDidMount() {
@@ -50,6 +51,7 @@ class Author extends Component {
 
 const mapStateToProps = (state) => ({
   authors: state.authors.authors,
+  auth: state.auth,
 });
 
 export default connect(mapStateToProps, { getAuthors, deleteAuthors })(Author);

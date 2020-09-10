@@ -26,12 +26,6 @@ class Notices extends Component {
 
   render() {
     const { user } = this.props.auth;
-    //  console.log("this.props.notices", this.props.notices);
-    // console.log("this.props.notices.results", this.props.notices.results);
-    // console.log(results);
-    // const { results } = this.props.notices;
-
-    // console.log(this.props.notices);
 
     return (
       <Fragment>
