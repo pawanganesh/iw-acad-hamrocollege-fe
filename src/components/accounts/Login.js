@@ -53,6 +53,9 @@ class Login extends Component {
           <p>
             New to HamroCollege? <Link to="/register">Register</Link>
           </p>
+          <p>
+            Forgot password? <Link to="/password-reset">Reset Password</Link>
+          </p>
         </Form>
       </div>
     );

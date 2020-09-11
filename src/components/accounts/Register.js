@@ -16,8 +16,10 @@ class Register extends Component {
   };
   static propTypes = {
     register: PropTypes.func.isRequired,
-    isAuthenticated: PropTypes.bool,
+    // isAuthenticated: PropTypes.bool,
+    auth: PropTypes.object.isRequired,
   };
+
   onSubmit = (e) => {
     e.preventDefault();
     const { first_name, last_name, email, password, password2 } = this.state;
@@ -37,8 +39,8 @@ class Register extends Component {
   onChange = (e) => this.setState({ [e.target.name]: e.target.value });
 
   render() {
-    if (this.props.isAuthenticated) {
-      return <Redirect to="/" />;
+    if (this.props.auth.isAuthenticated && this.props.auth.user.is_active) {
+      return <Redirect to="/login" />;
     }
     const { first_name, last_name, email, password, password2 } = this.state;
     return (
@@ -100,7 +102,8 @@ class Register extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  isAuthenticated: state.auth.isAuthenticated,
+  // isAuthenticated: state.auth.isAuthenticated,
+  auth: state.auth,
 });
 
 export default connect(mapStateToProps, { register, createMessage })(Register);

@@ -11,6 +11,7 @@ import {
   REGISTER_SUCCESS,
   GET_ERRORS,
   GET_USERPROFILE,
+  PASSWORD_RESET_EMAIL,
 } from "./types";
 
 //CHECK TOKEN & LOAD USER
@@ -169,4 +170,22 @@ export const getUserProfile = (username) => (dispatch, getState) => {
       });
     })
     .catch((err) => console.log(err));
+};
+
+//PASSWORD RESET
+
+export const passwordReset = ({ email }) => (dispatch) => {
+  // Request Body
+  const body = JSON.stringify({ email });
+
+  axios
+    .post("http://127.0.0.1:8000/password-reset/", body)
+    .then((res) => {
+      dispatch({
+        type: PASSWORD_RESET_EMAIL,
+      });
+    })
+    .catch((err) => {
+      dispatch(returnErrors(err.response.data, err.response.status));
+    });
 };

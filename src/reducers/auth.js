@@ -6,6 +6,7 @@ import {
   LOGIN_FAIL,
   LOGOUT_SUCCESS,
   REGISTER_SUCCESS,
+  PASSWORD_RESET_EMAIL,
   REGISTER_FAIL,
 } from "../actions/types";
 
@@ -33,7 +34,7 @@ const authReducer = (state = initialState, action) => {
       };
 
     case LOGIN_SUCCESS:
-    case REGISTER_SUCCESS:
+      // case REGISTER_SUCCESS:
       localStorage.setItem("token", action.payload.token);
       return {
         ...state,
@@ -54,7 +55,10 @@ const authReducer = (state = initialState, action) => {
         isAuthenticated: false,
         isLoading: false,
       };
-
+    case PASSWORD_RESET_EMAIL:
+      return {
+        ...state,
+      };
     default:
       return state;
   }

@@ -8,6 +8,8 @@ import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import Register from "./accounts/Register";
 import Login from "./accounts/Login";
 import UserProfile from "./accounts/UserProfile";
+import PasswordResetForm from "./accounts/PasswordResetForm";
+
 import ClassRoom from "../components/Classrooms/classroom";
 import PrivateRoute from "./common/PrivateRoute";
 import { loadUser } from "../actions/auth";
@@ -19,7 +21,7 @@ import Semester from "../components/Semester/Semester";
 import Subject from "../components/Subject/Subject";
 import Assignment from "../components/assign/Assignment";
 import Admin from "../components/Admin";
-import EditReq from "../components/Issue/EditReq"
+import EditReq from "../components/Issue/EditReq";
 
 import Alerts from "./layout/Alerts";
 
@@ -61,11 +63,14 @@ class App extends Component {
               <PrivateRoute exact path="/subject" component={Subject} />
               <PrivateRoute exact path="/assignment" component={Assignment} />
               <PrivateRoute exact path="/edit/:id" component={EditReq} />
+              <Route
+                exact
+                path="/password-reset"
+                component={PasswordResetForm}
+              />
 
               {/* Added End */}
-
               {/* Addedlater */}
-
               <PrivateRoute exact path="/library" component={Library} />
               <PrivateRoute exact path="/author" component={Author} />
               <PrivateRoute exact path="/publisher" component={Publisher} />

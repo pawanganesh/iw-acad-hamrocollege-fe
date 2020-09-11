@@ -57,9 +57,6 @@ export const GET_SUBJECT = "GET_SUBJECT";
 export const GET_USERLIST = "GET_USERLIST";
 export const DELETE_USER = "DELETE_USER";
 export const GET_USERDETAIL = "GET_USERDETAIL";
-
-
 export const EDIT_REQUESTS = "EDIT_REQUESTS";
 export const GET_REQUEST = "GET_REQUEST";
-
-
+export const PASSWORD_RESET_EMAIL = "PASSWORD_RESET_EMAIL";
