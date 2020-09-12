@@ -4,7 +4,7 @@ import Author from "../Author/Author";
 import Publisher from "../Publisher/Publisher";
 import Book from "../Book/Book";
 import Request from "../Request/Request";
-import Issue from "../Issue/Issue";
+import Approval from "../Approval/Approval";
 
 
 const panes = [
@@ -44,7 +44,7 @@ const panes = [
     menuItem: "Book Issue",
     render: () => (
       <Tab.Pane>
-        <Issue />
+        <Approval />
       </Tab.Pane>
     ),
   },

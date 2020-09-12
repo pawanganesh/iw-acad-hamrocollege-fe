@@ -20,7 +20,7 @@ export const loadUser = () => (dispatch, getState) => {
   dispatch({ type: USER_LOADING });
 
   axios
-    .get("http://127.0.0.1:8000/api/auth/user", tokenConfig(getState))
+    .get("http://127.0.0.1:8000/api/auth/user/", tokenConfig(getState))
     .then((res) => {
       dispatch({
         type: USER_LOADED,
@@ -83,6 +83,7 @@ export const logout = () => (dispatch, getState) => {
 export const tokenConfig = (getState) => {
   //Get token from state
   const token = getState().auth.token;
+
 
   // Headers
   const config = {
