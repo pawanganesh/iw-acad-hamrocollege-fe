@@ -5,7 +5,7 @@ import Publisher from "../Publisher/Publisher";
 import Book from "../Book/Book";
 import Request from "../Request/Request";
 import Issue from "../Issue/Issue";
-
+import { connect } from "react-redux";
 
 const panes = [
   {
@@ -43,13 +43,15 @@ const panes = [
   {
     menuItem: "Book Issue",
     render: () => (
-      <Tab.Pane>
-        <Issue />
-      </Tab.Pane>
+      <Tab.Pane>{this.auth.user.is_librarian ? <Issue /> : ""}</Tab.Pane>
     ),
   },
 ];
 
 const Library = () => <Tab panes={panes} />;
 
-export default Library;
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
+
+export default connect(mapStateToProps)(Library);
