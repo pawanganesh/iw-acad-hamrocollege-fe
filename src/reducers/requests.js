@@ -15,7 +15,7 @@ import { GET_REQUESTS, DELETE_REQUESTS, ADD_REQUESTS, EDIT_REQUESTS, GET_REQUEST
             case GET_REQUEST:
                 return {
                     ...state,
-                    [action.payload.id]: action.payload
+                    requests: action.payload
                 }
             case DELETE_REQUESTS:
                 return {

@@ -34,6 +34,7 @@ class Login extends Component {
           <Form.Field>
             <label>Email</label>
             <input
+              type="email"
               placeholder="Email"
               onChange={this.onChange}
               value={username}
@@ -43,6 +44,7 @@ class Login extends Component {
           <Form.Field>
             <label>Password</label>
             <input
+              type="password"
               placeholder="Password"
               onChange={this.onChange}
               value={password}

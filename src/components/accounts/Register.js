@@ -33,6 +33,7 @@ class Register extends Component {
         password,
       };
       this.props.register(newUser);
+      this.props.createMessage({ Registersuccess: "Register Successfull" });
     }
   };
 
@@ -48,6 +49,7 @@ class Register extends Component {
         <Form onSubmit={this.onSubmit}>
           <Form.Group widths="equal">
             <Form.Input
+              type="text"
               fluid
               label="First name"
               name="first_name"
@@ -67,6 +69,7 @@ class Register extends Component {
           <Form.Field>
             <label>Email</label>
             <input
+              type="email"
               placeholder="Email"
               onChange={this.onChange}
               name="email"
@@ -76,6 +79,7 @@ class Register extends Component {
           <Form.Field>
             <label>Password</label>
             <input
+              type="password"
               placeholder="Password"
               onChange={this.onChange}
               name="password"
@@ -85,6 +89,7 @@ class Register extends Component {
           <Form.Field>
             <label>Confirm Password</label>
             <input
+              type="password"
               placeholder="Confirm Password"
               onChange={this.onChange}
               name="password2"

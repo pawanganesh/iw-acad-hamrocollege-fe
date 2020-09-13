@@ -57,12 +57,17 @@ export const editRequests = (id, formValues) => async (dispatch, getState) => {
   });
   //  history.push({Home});
 };
-export const getRequest = (id) => async (dispatch, getState) => {
-  const res = await axios.get(`http://127.0.0.1:8000/api/bookrequest/${id}/`,  
-  tokenConfig(getState));  
-  dispatch({
-    type: GET_REQUEST,
-    payload: res.data
-  });
-  // history.push({Home});
+export const getRequest = (id) => (dispatch, getState) => {
+  axios
+    .delete(
+      `http://127.0.0.1:8000/api/bookrequest/${id}/`,
+      tokenConfig(getState)
+    )
+    .then((res) => {
+      dispatch({
+        type: GET_REQUEST,
+        payload: id,
+      });
+    })
+    .catch((err) => console.log(err));
 };

@@ -4,6 +4,7 @@ import Subject from "../Subject/Subject";
 import Semester from "../Semester/Semester";
 import Faculty from "../Faculty/Faculty";
 import UserManagement from "./UserManagement";
+import Issue from '../Issue/Issue'
 
 const panes = [
   {
@@ -35,6 +36,14 @@ const panes = [
     render: () => (
       <Tab.Pane>
         <UserManagement />
+      </Tab.Pane>
+    ),
+  },
+  {
+    menuItem: "Book Approved",
+    render: () => (
+      <Tab.Pane>
+        <Issue />
       </Tab.Pane>
     ),
   },

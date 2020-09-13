@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import { getRequests, deleteRequests } from "../../actions/requests";
 import Requestform from "./Requestform";
 
-
 class Request extends Component {
   static propTypes = {
     requests: PropTypes.array.isRequired,
@@ -16,9 +15,14 @@ class Request extends Component {
   }
 
   render() {
+    const { user } = this.props.auth;
     return (
       <Fragment>
-        {this.props.auth.user.is_student || this.props.auth.user.is_teacher  ? <Requestform /> : ""}
+        {this.props.auth.user.is_student || this.props.auth.user.is_teacher ? (
+          <Requestform />
+        ) : (
+          ""
+        )}
         {/* <Requestform /> */}
         <h1>Request List</h1>
         <table className="table">
@@ -32,22 +36,55 @@ class Request extends Component {
             </tr>
           </thead>
           <tbody>
-            {this.props.requests.map((request) => (
-              <tr key={request.id}>
-                <td>{`${request.user_fn} ${request.user_ln}`}</td>
-                <td>{request.book_name}</td>
-                <td>{request.status}</td>
-                <td>{request.request_date}</td>
-                <td>
-                  <button
-                    onClick={this.props.deleteRequests.bind(this, request.id)}
-                    className="btn btn-danger btn-sm"
-                  >
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            ))}
+            {this.props.requests.map((request) =>
+              user.id === request.user ? (
+                <tr key={request.id}>
+                  <td>{`${request.user_fn} ${request.user_ln}`}</td>
+                  <td>{request.book_name}</td>
+                  <td>{request.status}</td>
+                  <td>{request.request_date}</td>
+                  <td>
+                    {this.props.auth.user.is_student ? (
+                      <button
+                        onClick={this.props.deleteRequests.bind(
+                          this,
+                          request.id
+                        )}
+                        className="btn btn-danger btn-sm"
+                      >
+                        Delete
+                      </button>
+                    ) : (
+                      ""
+                    )}
+                  </td>
+                </tr>
+              ) : user.is_librarian ? (
+                <tr key={request.id}>
+                  <td>{`${request.user_fn} ${request.user_ln}`}</td>
+                  <td>{request.book_name}</td>
+                  <td>{request.status}</td>
+                  <td>{request.request_date}</td>
+                  <td>
+                    {this.props.auth.user.is_student ? (
+                      <button
+                        onClick={this.props.deleteRequests.bind(
+                          this,
+                          request.id
+                        )}
+                        className="btn btn-danger btn-sm"
+                      >
+                        Delete
+                      </button>
+                    ) : (
+                      ""
+                    )}
+                  </td>
+                </tr>
+              ) : (
+                ""
+              )
+            )}
           </tbody>
         </table>
       </Fragment>

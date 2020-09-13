@@ -36,7 +36,7 @@ class Publisher extends Component {
                 <td>{publisher.city}</td>
 
                 <td>
-                  <button
+                  {/* <button
                     onClick={this.props.deletePublishers.bind(
                       this,
                       publisher.id
@@ -44,7 +44,16 @@ class Publisher extends Component {
                     className="btn btn-danger btn-sm"
                   >
                     Delete
-                  </button>
+                  </button> */}
+                  {this.props.auth.user.is_librarian ? <button
+                    onClick={this.props.deletePublishers.bind(
+                      this,
+                      publisher.id
+                    )}
+                    className="btn btn-danger btn-sm"
+                  >
+                    Delete
+                  </button> : ""}
                 </td>
               </tr>
             ))}

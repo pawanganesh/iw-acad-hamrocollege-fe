@@ -40,12 +40,18 @@ class Book extends Component {
                 <td>{book.publisher_name}</td>
                 <td>{book.edition}</td>
                 <td>
-                  <button
+                  {this.props.auth.user.is_librarian ? <button
+                      onClick={this.props.deleteBooks.bind(this, book.id)}
+                      className="btn btn-danger btn-sm"
+                    >
+                      Delete
+                    </button> : ""}
+                  {/* <button
                     onClick={this.props.deleteBooks.bind(this, book.id)}
                     className="btn btn-danger btn-sm"
                   >
                     Delete
-                  </button>
+                  </button> */}
                 </td>
               </tr>
             ))}

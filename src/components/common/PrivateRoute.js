@@ -9,7 +9,6 @@ const PrivateRoute = ({ component: Component, auth, ...rest }) => (
     {...rest}
     render={(props) => {
       if (auth.isLoading) {
-        // return <h2>Loading...</h2>;
         return <Loader />;
       } else if (!auth.isAuthenticated) {
         return <Redirect to="/login" />;
@@ -19,10 +18,6 @@ const PrivateRoute = ({ component: Component, auth, ...rest }) => (
     }}
   />
 );
-PrivateRoute.propTypes = {
-  // authors: PropTypes.array.isRequired,
-  auth: PropTypes.object.isRequired,
-};
 
 const mapStateToProps = (state) => ({
   auth: state.auth,
