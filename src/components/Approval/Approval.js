@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { getIssues, deleteIssues } from "../../actions/issues";
 import Issueform from "../Issue/Issueform";
+// import Issue from "../Issue/Issue";
  class Approval extends Component {
      static propTypes = {
      issues: PropTypes.array.isRequired,
@@ -16,8 +17,10 @@ import Issueform from "../Issue/Issueform";
    render() {
         return (
       <Fragment>
+        
+        {/* <Issue/> */}
         {this.props.auth.user.is_librarian ? <Issueform /> : ""}
-         <h1>Book Issued</h1>
+         <h1>Approved Books Issued</h1>
        <table className="table">
            <thead>
              <tr>
@@ -38,12 +41,18 @@ import Issueform from "../Issue/Issueform";
                  <td>{issue.issue_date}</td>
                  <td>{issue.return_date}</td>
                  <td>
-                   <button
+                   {/* <button
                      onClick={this.props.deleteIssues.bind(this, issue.id)}
                      className="btn btn-danger btn-sm"
                    >
                      Delete
-                   </button>
+                   </button> */}
+                   {this.props.auth.user.is_librarian ? <button
+                      onClick={this.props.deleteIssues.bind(this, issue.id)}
+                      className="btn btn-danger btn-sm"
+                    >
+                      Delete
+                    </button> : ""}
                  </td>
                </tr>
              ))}

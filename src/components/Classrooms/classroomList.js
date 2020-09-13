@@ -16,7 +16,7 @@ class ClassroomList extends Component {
   render() {
     return (
       <Fragment>
-        {this.props.auth.user.is_admin ? <AddNewClassroomForm /> : ""}
+        <AddNewClassroomForm />
         <h2>My Classroom</h2>
         <Table celled>
           <Table.Header>

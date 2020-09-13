@@ -40,7 +40,7 @@ const panes = [
     ),
   },
   {
-    menuItem: "Book Issue",
+    menuItem: "Book Approved",
     render: () => (
       <Tab.Pane>
         <Issue />

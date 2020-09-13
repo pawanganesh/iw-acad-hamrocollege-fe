@@ -25,6 +25,9 @@ export class Alerts extends Component {
       if (message.addNotice) alert.success(message.addNotice);
       if (message.addClassroom) alert.success(message.addClassroom);
       if (message.deleteUser) alert.success(message.deleteUser);
+      if (message.Registersuccess) alert.success(message.Registersuccess);      
+      // Registersuccess
+
     }
   }
   render() {

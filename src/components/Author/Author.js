@@ -32,12 +32,13 @@ class Author extends Component {
                 <td>{author.firstname}</td>
                 <td>{author.lastname}</td>
                 <td>
-                  <button
+                  {this.props.auth.user.is_librarian ? <button
                     onClick={this.props.deleteAuthors.bind(this, author.id)}
                     className="btn btn-danger btn-sm"
                   >
                     Delete
-                  </button>
+                  </button> : ""}
+                  
                 </td>
               </tr>
             ))}

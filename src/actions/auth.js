@@ -160,7 +160,7 @@ export const register = ({ first_name, last_name, email, password }) => (
 export const getUserProfile = (username) => (dispatch, getState) => {
   axios
     .get(
-      `http://127.0.0.1:8000/api/auth/userprofile/${username}`,
+      `http://127.0.0.1:8000/api/auth/userprofile/${username}/`,
       tokenConfig(getState)
     )
     .then((res) => {

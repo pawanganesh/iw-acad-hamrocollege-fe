@@ -14,14 +14,14 @@ const panes = [
     ),
   },
 
-  {
-    menuItem: "Classroom Discussion",
-    render: () => (
-      <Tab.Pane>
-        <ClassroomDiscussion />
-      </Tab.Pane>
-    ),
-  },
+  // {
+  //   menuItem: "Classroom Discussion",
+  //   render: () => (
+  //     <Tab.Pane>
+  //       <ClassroomDiscussion />
+  //     </Tab.Pane>
+  //   ),
+  // },
   {
     menuItem: "Assignment",
     render: () => (
